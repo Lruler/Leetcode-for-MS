@@ -82,5 +82,5 @@ T19 https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
 
 /* 
 T148 https://leetcode-cn.com/problems/sort-list/
-升序排序列表  自顶向下归并  自低向上归并
+升序排序列表  自顶向下归并  自低向上归并 即一个递归一个迭代
 */
