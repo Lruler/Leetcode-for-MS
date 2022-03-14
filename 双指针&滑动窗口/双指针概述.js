@@ -142,3 +142,60 @@ T438 https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/
 起始索引等于 6 的子串是 "bac", 它是 "abc"
 的异位词。
 */
+
+var findAnagrams = function (s2, s1) {
+    // 先处理 s1， 利用map 列个清单 记录字符出现的 种类 和 次数 
+    let need = new Map();
+    for (let i of s1) {
+        need.set(i, need.has(i) ? need.get(i) + 1 : 1);
+    }
+    // 现在处理s2 看看有没有这样一个子串 
+    let l = r = 0;
+    let window = new Map();
+    let valid = 0;
+    let res = [];
+    while (r < s2.length) {
+        if (need.has(s2[r])) {
+            window.set(s2[r], window.has(s2[r]) ? window.get(s2[r]) + 1 : 1);
+            if (window.get(s2[r]) == need.get(s2[r])) valid++; // s2[r]这个所需字符全了  valid++
+        }
+        r++;
+        while (r - l >= s1.length) {
+            if (valid == need.size) res.push(l); // 所有字符种类都找全了 成功✅
+            if (need.has(s2[l])) {
+                if (window.get(s2[l]) == need.get(s2[l])) valid--;
+                window.set(s2[l], window.get(s2[l]) - 1);
+            }
+            l++;
+        }
+    }
+    return res;
+};
+
+
+/* 
+T3 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+输入: s = "abcabcbb"
+输出: 3
+解释: 因为无重复字符的最长子串是 "abc"，
+所以其长度为 3
+*/
+
+var lengthOfLongestSubstring = function (s) {
+    let window = new Map();
+    let l = r = 0;
+    let res = 0;
+    while (r < s.length) {
+        let c = s[r]
+        r++
+
+        window.set(c, window.has(c) ? window.get(c) + 1: 1)
+        while (window.get(c) > 1) {
+            let d = s[l];
+            l++
+            window.set(d, window.get(d) - 1)
+        }
+        res = Math.max(res, r - l)
+    }
+    return res
+};
