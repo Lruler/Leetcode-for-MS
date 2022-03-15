@@ -7,6 +7,75 @@ T206 easy https://leetcode-cn.com/problems/reverse-linked-list/
 反转链表 简单 迭代/递归 都行
 */
 
+/* 
+T92 mid https://leetcode-cn.com/problems/reverse-linked-list-ii/
+反转链表 II
+ */
+// 反转前n个节点
+let successor = null
+const reverseN = (head, n) => {
+    if (n == 1) {
+        successor = head.next
+        return head
+    }
+    let last = reverseN(head.next, n - 1)
+    head.next.next = head
+    head.next = successor
+    return last
+}
+var reverseBetween = function (head, left, right) {
+    if (left == 1) return reverseN(head, right)
+
+    head.next = reverseBetween(head.next, left - 1, right - 1)
+    return head
+};
+
+/* 
+T25 HARD !!!! https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+K 个一组翻转链表e
+*/
+var reverseKGroup = function (head, k) {
+    // 反转链表函数
+    var reverseList = function (a, b) {
+        let pre, cur, nxt;
+        pre = null;
+        cur = a;
+        nxt = a;
+        // 进行的操作是每次循环将cur->pre，注意b的方向没有改变
+        while (cur != b) {
+            // 保存a的下一个值next
+            nxt = cur.next;
+            // 将cur指向上一个值pre（反转指向）
+            cur.next = pre;
+            // 将pre赋予当前值，当做下一次循环的pre
+            pre = cur;
+            // 将cur赋予新值，用于下一次循环的cur
+            cur = nxt;
+        }
+        // 返回的pre是b结点前一个节点，改变了方向
+        return pre;
+    }
+
+    if (!head) {
+        return null;
+    }
+    let a = head;
+    let b = head;
+    // 区间[a,b)包含k个元素
+    for (i = 0; i < k; i++) {
+        //剩余的结点数不足k个，反转结束
+        if (b == null) {
+            return head;
+        } else {
+            b = b.next;
+        }
+    }
+    //反转前k个元素
+    let newHead = reverseList(a, b);
+    a.next = reverseKGroup(b, k);
+    return newHead;
+};
+
 
 /* 
 T21 https://leetcode-cn.com/problems/merge-two-sorted-lists/
