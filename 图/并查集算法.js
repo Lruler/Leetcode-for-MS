@@ -138,3 +138,10 @@ var equationsPossible = function (equations) {
     }
     return true;
 };
+
+/* 
+T261 MID 以图判数
+就是判断是否有环 且连通分量为1  树可以理解为无环连通图
+*/
+
+
