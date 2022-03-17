@@ -84,7 +84,7 @@ T21 https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
 
 /* 
- **** HARD 合并k个有序列表 https://leetcode-cn.com/problems/merge-k-sorted-lists/
+T23 **** HARD 合并k个有序列表 https://leetcode-cn.com/problems/merge-k-sorted-lists/
  用 优先队列(二叉堆) 实现
 */
 class MinHeap {
@@ -237,3 +237,56 @@ T148 https://leetcode-cn.com/problems/sort-list/
 T876 easy https://leetcode-cn.com/problems/middle-of-the-linked-list/
 找到链表中间节点
 */
+
+
+/* 
+T141 https://leetcode-cn.com/problems/linked-list-cycle/submissions/
+easy 判断链表是否有环
+*/
+
+const hasCycle = function (head) {
+    if (head === null || head.next === null) {
+        return false;
+    }
+    let slow = head;
+    let fast = head.next;
+    while (slow) {
+        if (slow === fast) {
+            return true
+        }
+        slow = slow?.next || null;
+        fast = fast?.next?.next || null;
+    }
+    return false;
+};
+
+/* 
+
+T142 https: //leetcode-cn.com/problems/linked-list-cycle-ii/
+mid 判断有无环 并返回环的起点
+*/
+
+var detectCycle = function (head) {
+    if (head === null) {
+        return null;
+    }
+    let slow = head,
+        fast = head;
+    while (fast !== null) {
+        slow = slow.next;
+        if (fast.next !== null) {
+            fast = fast.next.next;
+        } else {
+            return null;
+        }
+        if (fast === slow) {
+            let ptr = head;
+            while (ptr !== slow) {
+                ptr = ptr.next;
+                slow = slow.next;
+            }
+            return ptr;
+        }
+    }
+    return null;
+};
