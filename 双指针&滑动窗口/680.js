@@ -18,3 +18,27 @@ var validPalindrome = function (s, r = 0) {
     }
     return true
 };
+
+
+/* 
+T344 easy https://leetcode-cn.com/problems/reverse-string/submissions/
+反转字符串数组
+*/
+
+var reverseString = function (s) {
+    let l = 0;
+    r = s.length - 1;
+    while (l < r) {
+        if (s[l] == s[r]) {
+            l++;
+            r--;
+            continue
+        };
+        let temp = s[r]
+        s[r] = s[l];
+        s[l] = temp;
+        l++;
+        r--;
+    }
+    return s
+};

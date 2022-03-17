@@ -173,7 +173,7 @@ var findAnagrams = function (s2, s1) {
 };
 
 
-/* 
+/*
 T3 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 输入: s = "abcabcbb"
 输出: 3
@@ -198,4 +198,112 @@ var lengthOfLongestSubstring = function (s) {
         res = Math.max(res, r - l)
     }
     return res
+};
+
+
+/* 
+T5 Mid https://leetcode-cn.com/problems/longest-palindromic-substring/
+最长回文子串
+*/
+
+// 在s中寻找以s[l]和s[r]为中心的最长回文串
+const check = (s, l, r) => {
+    while (l >= 0 && r < s.length && s[l] == s[r]) {
+        l--;
+        r++;
+    }
+    return s.slice(l + 1, r)
+}
+var longestPalindrome = function (s) {
+    let res = '';
+    for (let i = 0; i < s.length; ++i) {
+        let s1 = check(s, i, i)
+        let s2 = check(s, i, i + 1)
+        res = res.length > s1.length ? res : s1;
+        res = res.length > s2.length ? res : s2;
+
+    }
+    return res
+};
+
+
+/* 
+下面这部分不用滑动窗口
+用快慢 / 左右
+*/
+
+/* 
+T26 easy https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+删除有序数组重复项
+*/
+var removeDuplicates = function (nums) {
+    if (nums.length == 0) return 0
+    let l = r = 0;
+    while (r < nums.length) {
+        if (nums[r] !== nums[l]) {
+            l++
+            nums[l] = nums[r]
+        }
+        r++
+    }
+    return l + 1
+};
+
+
+/* 
+T27 easy https://leetcode-cn.com/problems/remove-element/
+数组原地移除给定的val
+*/
+
+var removeElement = function (nums, val) {
+    let fast = slow = 0;
+    while (fast < nums.length) {
+        if (nums[fast] !== val) {
+            nums[slow] = nums[fast]
+            slow++
+        }
+        fast++
+    }
+    return slow
+};
+
+/* 
+T283 easy https://leetcode-cn.com/problems/move-zeroes/
+移动0
+*/
+
+var moveZeroes = function (nums) {
+    let n = nums.length
+    let k = 0
+    for (let i = 0; i < n; i++) {
+        if (nums[i] != 0) {
+            nums[k++] = nums[i]
+        }
+    }
+    while (k < n) {
+        nums[k++] = 0
+    }
+};
+
+/* 
+T344 easy https://leetcode-cn.com/problems/reverse-string/submissions/
+反转字符串数组
+*/
+
+var reverseString = function (s) {
+    let l = 0;
+    r = s.length - 1;
+    while (l < r) {
+        if (s[l] == s[r]) {
+            l++;
+            r--;
+            continue
+        };
+        let temp = s[r]
+        s[r] = s[l];
+        s[l] = temp;
+        l++;
+        r--;
+    }
+    return s
 };
