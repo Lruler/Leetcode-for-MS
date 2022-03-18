@@ -36,8 +36,38 @@ var canFinish = function (numCourses, prerequisites) {
 
 /* 
 T210 MID https://leetcode-cn.com/problems/course-schedule-ii/
-课程表 II 拓扑排序（DFS）
+课程表 II 拓扑排序（DFS） 
 拓扑排序 就是 把一幅图拉平 拉平后的图里所有边的方向是一致的
 将后序遍历反转 就是拓扑排序的结果
 */
+
+const findOrder = (numCourses, prerequisites) => {
+    let postorder = [];
+    let hasC = false;
+    let visited = [], onPath = [];
+    const graph = buildGraph(numCourses, prerequisites)
+    const traverse = (graph, s) => {
+        if (onPath[s]) {
+            hasC = true
+        }
+        if (visited[s] || hasC) return
+        onPath[s] = true;
+        visited[s] = true;
+        for (let t of graph[s]) {
+            traverse(graph, t)
+        }
+        postorder.push(s)
+        onPath[s] = false
+    }
+    for (let i = 0; i < numCourses; ++i) {
+        traverse(graph, i)
+    }
+    if (hasC) return []
+    postorder.reverse();
+    let res = new Array(numCourses);
+    for (let i = 0; i < numCourses; ++i) {
+        res[i] = postorder[i]
+    }
+    return res
+}
 
