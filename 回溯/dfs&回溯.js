@@ -19,7 +19,7 @@ const backtrack = (path(路径), choice(选择列表)) => {
 */
 
 // https://leetcode-cn.com/problems/permutations/
-// 排列
+//T46 排列
 var permute = function (nums) {
     const res = []
     const backtrack = (path) => {
