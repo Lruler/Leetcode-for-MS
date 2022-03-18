@@ -228,6 +228,54 @@ var longestPalindrome = function (s) {
 
 
 /* 
+T718 MID https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/submissions/
+最长公共子数组
+*/
+var findLength = function (nums1, nums2) {
+    let max = 0; // 用于记录最大子数组长度
+    let longer = nums1.length > nums2.length ? nums1 : nums2; // 找到二者中较长者
+    let shorter = nums1.length > nums2.length ? nums2 : nums1; // 找到二者中较短者
+    let r = 0,
+        l = r - shorter.length + 1; // 移动较短的数组，l和r分别代表较短数组的0和最后一个元素，在较长数组中的位置索引。
+
+    function find(ul, ur, dl, dr) {
+        // 确定位置后，一次遍历找到当前的最大子数组长度 
+        let max = 0;
+        let c = 0;
+        while (ul < ur && dl < dr) {
+            if (longer[ul] === shorter[dl]) c += 1;
+            else c = 0;
+            max = Math.max(max, c);
+            ul += 1;
+            dl += 1;
+        }
+        return max;
+    }
+
+    while (l <= 0) {
+        // 较短数组在较长数组左侧的情况
+        max = Math.max(max, find(0, r + 1, -l, shorter.length));
+        l++;
+        r++;
+    }
+    while (r < longer.length) {
+        // 较短数组在较长数组内部的情况
+        max = Math.max(max, find(l, r + 1, 0, shorter.length));
+        l++;
+        r++;
+    }
+    while (l < longer.length) {
+        // 较短数组在较长数组右侧的情况
+        max = Math.max(max, find(l, longer.length, 0, shorter.length - (r + 1 - longer.length)));
+        l++;
+        r++;
+    }
+    return max;
+};
+
+
+
+/* 
 下面这部分不用滑动窗口
 用快慢 / 左右
 */
