@@ -16,3 +16,67 @@ right root * 2 + 1
 /* 
 优先队列 就是插入或删除元素时元素会自动排序 底层原理就是二叉堆实现的
 */
+
+
+class MaxPQ {
+    pq;
+    n;
+    // 父节点索引
+    parent(root) {
+        return root / 2
+    }
+    // 左孩子索引
+    left(root) {
+        return root * 2
+    }
+    // 右孩子索引
+    right(root) {
+        return root * 2 + 1
+    }
+    // 返回队列最大元素
+    max() {
+        return this.pq[1];
+    }
+
+    // 插入元素
+    insert(key) {
+
+    }
+
+    // 删除并返回当前队列中最大元素
+    delMax() {
+
+    }
+
+    // 上浮第k个元素 维护最大堆
+    swim(k) {
+        while (k > 1 && this.less(this.parent(k), k)) {
+            // 如果k比上层大 将K换上去
+            this.exch(this.parent(k), k)
+            k = this.parent(k)
+        }
+    }
+    // 下沉第k个元素 维护最大堆
+    sink(k) {
+        while (this.left(k) <= N) {
+            // 假设左边节点大
+            let older = this.left(k);
+            // 如果右边节点存在 比一下大小
+            if (this.right(k) <= N && this.less(older, this.right(k))) older = this.right(k);
+            if (this.less(older, k)) break
+            this.exch(k, older)
+            k = older
+        }
+    }
+    // 交换数组的两个元素
+    exch(i, j) {
+        let temp = this.pq[i];
+        pq[i] = pq[j];
+        pq[j] = temp;
+    }
+
+    // 比较两个元素
+    less(i, j) {
+
+    }
+}
