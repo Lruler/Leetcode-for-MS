@@ -34,8 +34,6 @@ class FreqStack {
         return v
     }
 }
-
-
 /* 
 https://leetcode-cn.com/problems/find-median-from-data-stream/
 T 295 HARD 数据流中位数 用两个堆来实现 大顶堆和小顶堆
@@ -177,9 +175,6 @@ class Heap {
         this.data[j] = temp
     }
 }
-
-
-
 /* 
 单调栈  即维护栈是单调有序的 新元素进栈 要把比他大(或小 看递增还是递减的)的弹出栈才行
 
@@ -250,6 +245,29 @@ var nextGreaterElements = function (nums) {
         while (s.length !== 0 && s.top() <= nums[i % len]) s.pop()
         res[i % len] = s.length == 0 ? -1 : s.top()
         s.push(nums[i % len])
+    }
+    return res
+};
+
+/* 
+单调队列 就是一个双端队列 和单点栈差不多 要维持队列的有序性
+T239 HARD https://leetcode-cn.com/problems/sliding-window-maximum/
+*/
+
+var maxSlidingWindow = function (nums, k) {
+    let q = []
+    let res = []
+    for (let i = 0; i < nums.length; i++) {
+        while (q.length && nums[i] >= nums[q[q.length - 1]]) {
+            q.pop()
+        }
+        q.push(i)
+        while (q[0] <= i - k) {
+            q.shift()
+        }
+        if (i >= k - 1) {
+            res.push(nums[q[0]])
+        }
     }
     return res
 };

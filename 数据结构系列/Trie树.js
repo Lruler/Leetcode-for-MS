@@ -20,7 +20,6 @@ const getNode = (node, key) => {
     return p
 }
 
-
 class TrieMap {
 
     R = 256;
