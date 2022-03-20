@@ -29,7 +29,7 @@ class LRUCache {
 }
 
 
-// LFU
+// LFU 与LRU不同 LRU是淘汰最久没被使用的 而LFU是淘汰使用次数最少的
 
 class Node {
     constructor(key, val) {
