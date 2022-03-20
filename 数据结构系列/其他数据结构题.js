@@ -178,3 +178,78 @@ class Heap {
     }
 }
 
+
+
+/* 
+单调栈  即维护栈是单调有序的 新元素进栈 要把比他大(或小 看递增还是递减的)的弹出栈才行
+
+模版 nums为传参
+let res = new Array(nums.length);
+let s = [];
+s.top = () => s[s.length - 1]
+// 倒着入栈
+for (let i = nums.length - 1; i >= 0; --i) {
+    while (s.length !== 0 && s.top() <= nums[i]) {
+        s.pop();
+    }
+    res[i] = s.length == 0 ? -1 : s.top()
+    s.push(i)
+}
+return res
+
+T739 MID https://leetcode-cn.com/problems/daily-temperatures/
+每日温度
+*/
+
+var dailyTemperatures = function (temperatures) {
+    let res = new Array(temperatures.length);
+    let s = [];
+
+    for (let i = temperatures.length - 1; i >= 0; --i) {
+        while (s.length !== 0 && temperatures[s[s.length - 1]] <= temperatures[i]) {
+            s.pop();
+        }
+        res[i] = s.length == 0 ? 0 : (s[s.length - 1] - i)
+        s.push(i)
+    }
+    return res
+};
+
+/* 
+T496 https://leetcode-cn.com/problems/next-greater-element-i/
+下一个更大数
+*/
+
+var nextGreaterElement = function (nums1, nums2) {
+    const map = new Map();
+    const stack = [];
+    for (let i = nums2.length - 1; i >= 0; --i) {
+        const num = nums2[i];
+        while (stack.length && num >= stack[stack.length - 1]) {
+            stack.pop();
+        }
+        map.set(num, stack.length ? stack[stack.length - 1] : -1);
+        stack.push(num);
+    }
+    const res = new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]));
+    return res;
+};
+
+
+/* 
+T503 https://leetcode-cn.com/problems/next-greater-element-ii/
+下一个更大数 环形(就是把数组翻倍)
+*/
+
+var nextGreaterElements = function (nums) {
+    const len = nums.length
+    let res = new Array(len);
+    let s = [];
+    s.top = () => s[s.length - 1]
+    for (let i = 2 * len - 1; i >= 0; --i) {
+        while (s.length !== 0 && s.top() <= nums[i % len]) s.pop()
+        res[i % len] = s.length == 0 ? -1 : s.top()
+        s.push(nums[i % len])
+    }
+    return res
+};
