@@ -305,7 +305,7 @@ var combinationSum4 = function (nums, target) {
 
 
 /* 
-T78 https: //leetcode-cn.com/problems/subsets/
+T78 https://leetcode-cn.com/problems/subsets/
 求子集
 */
 var subsets = function (nums) {
@@ -323,6 +323,29 @@ var subsets = function (nums) {
         backtrack([], i, 0)
     }
     return res
+};
+
+/* 
+T90 https://leetcode-cn.com/problems/subsets-ii/
+子集II 有重复元素
+*/
+var subsetsWithDup = function (nums) {
+
+    nums.sort((a, b) => a - b);
+    let res = [];
+    let path = [];
+    backtrack(nums, 0);
+
+    function backtrack(nums, start) {
+        res.push([...path])
+        for (let i = start; i < nums.length; ++i) {
+            if (i > start && nums[i] == nums[i - 1]) continue;
+            path.push(nums[i])
+            backtrack(nums, i + 1)
+            path.pop()
+        }
+    }
+    return res;
 };
 
 
