@@ -1,6 +1,4 @@
-// T22 Mid https://leetcode-cn.com/problems/generate-parentheses/
-
-
+// T22 括号生成 Mid https://leetcode-cn.com/problems/generate-parentheses/
 var generateParenthesis = function (n) {
     if (n == 0) return [];
     let res = [];
