@@ -35,3 +35,38 @@ var coinChange = function (coins, amount) {
     if (dp[amount] === Infinity) return -1;
     else return dp[amount]
 };
+
+
+/* 
+T887 HARD https://leetcode-cn.com/problems/super-egg-drop/
+高楼接鸡蛋
+dp[k][n] = m
+# 当前状态为 k 个鸡蛋， 面对 n 层楼
+# 这个状态下最少的扔鸡蛋次数为 m
+反向思考
+dp[k][m] = n
+# 当前有 k 个鸡蛋，可以尝试扔 m 次鸡蛋
+# 这个状态下，最坏情况下最多能确切测试一栋 n 层的楼
+
+# 比如说 dp[1][7] = 7 表示：
+# 现在有 1 个鸡蛋，允许你扔 7 次;
+# 这个状态下最多给你 7 层楼，
+# 使得你可以确定楼层 F 使得鸡蛋恰好摔不碎
+# （一层一层线性探查嘛）
+题目不是给你K鸡蛋，N层楼，让你求最坏情况下最少的测试次数m 吗？
+while循环结束的条件是dp[K][m] == N，也就是给你K个鸡蛋，允许测试m次，最坏情况下最多能测试N层楼。
+*/
+var superEggDrop = function (K, N) {
+    let dp = Array(K + 1);
+    for (let i = 0; i < K + 1; ++i) {
+        dp[i] = new Array(N + 1).fill(0)
+    }
+    let m = 0;
+    while (dp[K][m] < N) {
+        m++;
+        for (let k = 1; k <= K; k++) {
+            dp[k][m] = dp[k][m - 1] + dp[k - 1][m - 1] + 1;
+        }
+    }
+    return m
+};
