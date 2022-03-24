@@ -73,7 +73,7 @@ var superEggDrop = function (K, N) {
 
 
 /* 
-T72 https://leetcode-cn.com/problems/edit-distance/ 编辑距离
+T72 HARD https://leetcode-cn.com/problems/edit-distance/ 编辑距离
 */
 
 const min = (a, b, c) => {
@@ -99,4 +99,28 @@ var minDistance = function (word1, word2) {
         }
     }
     return dp[m][n]
+};
+
+
+/* 
+T312 戳气球 HARD https://leetcode-cn.com/problems/burst-balloons/
+dp[i][j] = x表示， 戳破气球i和气球j之间（ 开区间， 不包括i和j） 的所有气球， 可以获得的最高分数为x。
+*/
+var maxCoins = function (nums) {
+    let n = nums.length;
+    let point = new Array(n + 2);
+    point[0] = point[n + 1] = 1;
+    for (let i = 1; i <= n; ++i) {
+        point[i] = nums[i - 1];
+    }
+    let dp = Array.from(Array(n + 2), () => Array(n + 2).fill(0));
+    console.log(point)
+    for (let i = n; i >= 0; i--) {
+        for (let j = i + 1; j < n + 2; ++j) {
+            for (let k = i + 1; k < j; ++k) {
+                dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + point[i] * point[j] * point[k])
+            }
+        }
+    }
+    return dp[0][n + 1]
 };
