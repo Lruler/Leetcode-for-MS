@@ -355,3 +355,25 @@ var reverseString = function (s) {
     }
     return s
 };
+
+
+/* 
+T239 MID https://leetcode-cn.com/problems/minimum-size-subarray-sum/
+输入： target = 7, nums = [2, 3, 1, 2, 4, 3]
+输出： 2
+解释： 子数组[4, 3] 是该条件下的长度最小的子数组。
+*/
+var minSubArrayLen = function (target, nums) {
+    const len = nums.length;
+    let l = r = sum = 0,
+        res = len + 1; // 子数组的长度最大不会超过自身
+    while (r < len) {
+        sum += nums[r++]; // 右指针右移
+        while (sum >= target) {
+            // 因为上一步右指针右移了，所以r始终为开区间 [l, r)
+            res = res < r - l ? res : r - l;
+            sum -= nums[l++]; // 动态调节滑动窗口的起始位置（关键点）
+        }
+    }
+    return res > len ? 0 : res;
+};
