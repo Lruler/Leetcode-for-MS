@@ -10,10 +10,6 @@ const dijkstra = (start, end, graph) => {
 }
 */
 
-
-
-
-
 /* 
 T743 MID https://leetcode-cn.com/problems/network-delay-time/
 把网络延迟看作边的权重

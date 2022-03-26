@@ -107,55 +107,60 @@ function shellSort(arr) {
 自下而上的迭代； 迭代太复杂了 就算了
 */
 
-function mergeSort(arr) { // 采用自上而下的递归方法
-   let len = arr.length;
-    if (len < 2) {
-        return arr;
-    }
-   let middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
+
+let sortArray1 = function (nums) {
+    let len = nums.length
+    if (len === 1) return nums
+    let mid = len / 2
+    let left = nums.slice(0, mid)
+    let right = nums.slice(mid, len)
+    return merge(sortArray(left), sortArray(right))
 }
-
-function merge(left, right) {
-   let result = [];
-
+let merge = function (left, right) {
+    let result = []
     while (left.length && right.length) {
-        if (left[0] <= right[0]) {
-            result.push(left.shift());
+        if (left[0] < right[0]) {
+            result.push(left[0])
+            left.splice(0, 1)
         } else {
-            result.push(right.shift());
+            result.push(right[0]),
+                right.splice(0, 1)
         }
     }
-
-    while (left.length)
-        result.push(left.shift());
-
-    while (right.length)
-        result.push(right.shift());
-
-    return result;
+    return result.concat(left).concat(right)
 }
 
- // 快速排序 分治思想的另一体现
-let quickSort = function (arr) {
-     if (arr.length <= 1) {
-         return arr;
-     }
-    let pivotIndex = Math.floor(arr.length / 2);
-    let pivot = arr.splice(pivotIndex, 1)[0];
-    let left = [];
-    let right = [];
-     for (var i = 0; i < arr.length; i++) {
-         if (arr[i] < pivot) {
-             left.push(arr[i]);
-         } else {
-             right.push(arr[i]);
-         }
-     }
-     return quickSort(left).concat([pivot], quickSort(right));
 
+ // 快速排序 分治思想的另一体现
+var sortArray = function (nums) {
+    const sort = (nums, lo, hi) => {
+        let temp = new Array(nums.length)
+        const merge = (nums, lo, mid, hi) => {
+            for (let i = lo; i <= hi; ++i) {
+                temp[i] = nums[i]
+            }
+            let i = lo;
+            j = mid + 1;
+            for (let p = lo; p <= hi; ++p) {
+                if (i == mid + 1) {
+                    nums[p] = temp[j++]
+                } else if (j == hi + 1) {
+                    nums[p] = temp[i++]
+                } else if (temp[i] > temp[j]) {
+                    nums[p] = temp[j++]
+                } else {
+                    nums[p] = temp[i++]
+                }
+            }
+        }
+        if (lo == hi) return
+        let mid = lo + (hi - lo) / 2;
+        sort(nums, lo, mid);
+        sort(nums, mid + 1, hi)
+        merge(nums, lo, mid, hi)
+    }
+    sort(nums, 0, nums.length - 1)
+    return nums
 };
  
 
