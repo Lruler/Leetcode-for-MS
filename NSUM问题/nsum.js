@@ -76,11 +76,3 @@ const nSumTarget = (nums, n, start, target) => {
     }
     return res
 }
-
-
-var fourSum = function (nums, target) {
-    nums.sort((a, b) => a - b);
-    return nSumTarget(nums, 4, 0, target)
-}
-
-console.log(fourSum([1, 0, -1, 0, -2, 2], 0))
