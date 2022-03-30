@@ -377,3 +377,28 @@ var minSubArrayLen = function (target, nums) {
     }
     return res > len ? 0 : res;
 };
+
+
+// T2024 T1004 https://leetcode-cn.com/problems/maximize-the-confusion-of-an-exam/ 一个思路
+/* 
+给定一个二进制数组 nums 和一个整数 k， 如果可以翻转最多 k 个 0， 则返回 数组中连续 1 的最大个数。
+思路转化为
+对于任意的右端点 right，希望找到最小的左端点left，使得 [left,right] 包含不超过 k 个 0。
+只要我们枚举所有可能的右端点，将得到的区间的长度取最大值，即可得到答案。
+*/
+var longestOnes = function (nums, k) {
+    const n = nums.length;
+    let left = 0,
+        lsum = 0,
+        rsum = 0;
+    let ans = 0;
+    for (let right = 0; right < n; ++right) {
+        rsum += 1 - nums[right];
+        while (lsum < rsum - k) {
+            lsum += 1 - nums[left];
+            ++left;
+        }
+        ans = Math.max(ans, right - left + 1);
+    }
+    return ans;
+};
