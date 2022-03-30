@@ -168,3 +168,53 @@ var sortArray = function (nums) {
 /* 
 后面还有堆 计数 桶 基数 先不管了
 */
+
+function countingSort(arr, maxValue) {
+    var bucket = new Array(maxValue + 1),
+        sortedIndex = 0;
+    arrLen = arr.length,
+        bucketLen = maxValue + 1;
+
+    for (var i = 0; i < arrLen; i++) {
+        if (!bucket[arr[i]]) {
+            bucket[arr[i]] = 0;
+        }
+        bucket[arr[i]]++;
+    }
+
+    for (var j = 0; j < bucketLen; j++) {
+        while (bucket[j] > 0) {
+            arr[sortedIndex++] = j;
+            bucket[j]--;
+        }
+    }
+
+    return arr;
+}
+
+
+var counter = [];
+
+function radixSort(arr, maxDigit) {
+    var mod = 10;
+    var dev = 1;
+    for (var i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
+        for (var j = 0; j < arr.length; j++) {
+            var bucket = parseInt((arr[j] % mod) / dev);
+            if (counter[bucket] == null) {
+                counter[bucket] = [];
+            }
+            counter[bucket].push(arr[j]);
+        }
+        var pos = 0;
+        for (var j = 0; j < counter.length; j++) {
+            var value = null;
+            if (counter[j] != null) {
+                while ((value = counter[j].shift()) != null) {
+                    arr[pos++] = value;
+                }
+            }
+        }
+    }
+    return arr;
+}

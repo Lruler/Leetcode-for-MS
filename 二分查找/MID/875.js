@@ -1,17 +1,6 @@
 /* 
 https://leetcode-cn.com/problems/koko-eating-bananas/
 */
-
-/**
- * @param {number[]} piles
- * @param {number} h
- * @return {number}
- */
-/**
- * @param {number[]} piles
- * @param {number} H
- * @return {number}
- */
 var minEatingSpeed = function (piles, H) {
     // 找到最大值，确认速度区间
     let max = -Infinity;
