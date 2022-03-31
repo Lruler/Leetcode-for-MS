@@ -108,27 +108,40 @@ function shellSort(arr) {
 */
 
 
-let sortArray1 = function (nums) {
-    let len = nums.length
-    if (len === 1) return nums
-    let mid = len / 2
-    let left = nums.slice(0, mid)
-    let right = nums.slice(mid, len)
-    return merge(sortArray(left), sortArray(right))
+function mergeSort(arr) {
+    let len = arr.length
+    if (len < 2) {
+        return arr
+    }
+    let middle = Math.floor(len / 2)
+    //拆分成两个子数组
+    let left = arr.slice(0, middle)
+    let right = arr.slice(middle, len)
+    //递归拆分
+    let mergeSortLeft = mergeSort(left)
+    let mergeSortRight = mergeSort(right)
+    //合并
+    return merge(mergeSortLeft, mergeSortRight)
 }
-let merge = function (left, right) {
-    let result = []
+const merge = (left, right) => {
+    const result = [];
+
     while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            result.push(left[0])
-            left.splice(0, 1)
+        // 注意: 判断的条件是小于或等于，如果只是小于，那么排序将不稳定.
+        if (left[0] <= right[0]) {
+            result.push(left.shift()); //每次都要删除left或者right的第一个元素，将其加入result中
         } else {
-            result.push(right[0]),
-                right.splice(0, 1)
+            result.push(right.shift());
         }
     }
-    return result.concat(left).concat(right)
-}
+    //将剩下的元素加上
+    while (left.length) result.push(left.shift());
+
+    while (right.length) result.push(right.shift());
+
+    return result;
+};
+
 
 
  // 快速排序 分治思想的另一体现
