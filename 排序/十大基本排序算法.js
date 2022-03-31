@@ -64,7 +64,7 @@ function binaryInsertionSort(array) {
             left = 0,
             right = i - 1;
         while (left <= right) {
-            let middle = parseInt((left + right) / 2);
+            let middle = parselet((left + right) / 2);
             if (key < array[middle]) {
                 right = middle - 1;
             } else {
@@ -144,39 +144,54 @@ const merge = (left, right) => {
 
 
 
- // 快速排序 分治思想的另一体现
+// 快速排序 分治思想的另一体现
 var sortArray = function (nums) {
+    const swap = (nums, i, j) => {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
     const sort = (nums, lo, hi) => {
-        let temp = new Array(nums.length)
-        const merge = (nums, lo, mid, hi) => {
-            for (let i = lo; i <= hi; ++i) {
-                temp[i] = nums[i]
-            }
-            let i = lo;
-            j = mid + 1;
-            for (let p = lo; p <= hi; ++p) {
-                if (i == mid + 1) {
-                    nums[p] = temp[j++]
-                } else if (j == hi + 1) {
-                    nums[p] = temp[i++]
-                } else if (temp[i] > temp[j]) {
-                    nums[p] = temp[j++]
-                } else {
-                    nums[p] = temp[i++]
+        if (lo >= hi) return;
+        const partition = (nums, lo, hi) => {
+            let pivot = nums[lo];
+            // 关于区间的边界控制需格外小心，稍有不慎就会出错
+            // 我这里把 i, j 定义为开区间，同时定义：
+            // [lo, i) <= pivot；(j, hi] > pivot
+            // 之后都要正确维护这个边界区间的定义
+            let i = lo + 1,
+                j = hi;
+            // 当 i > j 时结束循环，以保证区间 [lo, hi] 都被覆盖
+            while (i <= j) {
+                while (i < hi && nums[i] <= pivot) {
+                    i++;
+                    // 此 while 结束时恰好 nums[i] > pivot
                 }
+                while (j > lo && nums[j] > pivot) {
+                    j--;
+                    // 此 while 结束时恰好 nums[j] <= pivot
+                }
+                // 此时 [lo, i) <= pivot && (j, hi] > pivot
+                if (i >= j) {
+                    break;
+                }
+                swap(nums, i, j);
             }
+            // 将 pivot 放到合适的位置，即 pivot 左边元素较小，右边元素较大
+            swap(nums, lo, j);
+            return j;
         }
-        if (lo == hi) return
-        let mid = lo + (hi - lo) / 2;
-        sort(nums, lo, mid);
-        sort(nums, mid + 1, hi)
-        merge(nums, lo, mid, hi)
+         // 对 nums[lo..hi] 进行切分
+         // 使得 nums[lo..p-1] <= nums[p] < nums[p+1..hi]
+        let p = partition(nums, lo, hi);
+        sort(nums, lo, p - 1);
+        sort(nums, p + 1, hi);
     }
     sort(nums, 0, nums.length - 1)
-    return nums
 };
- 
 
+let nums = [3,8,7,12,1,9]
+sortArray(nums)
 
 /* 
 后面还有堆 计数 桶 基数 先不管了
@@ -205,7 +220,6 @@ function countingSort(arr, maxValue) {
     return arr;
 }
 
-
 var counter = [];
 
 function radixSort(arr, maxDigit) {
@@ -213,7 +227,7 @@ function radixSort(arr, maxDigit) {
     var dev = 1;
     for (var i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
         for (var j = 0; j < arr.length; j++) {
-            var bucket = parseInt((arr[j] % mod) / dev);
+            var bucket = parselet((arr[j] % mod) / dev);
             if (counter[bucket] == null) {
                 counter[bucket] = [];
             }
@@ -231,3 +245,4 @@ function radixSort(arr, maxDigit) {
     }
     return arr;
 }
+
