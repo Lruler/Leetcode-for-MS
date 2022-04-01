@@ -144,7 +144,7 @@ const merge = (left, right) => {
 
 
 
-// 快速排序 分治思想的另一体现
+// 快速排序 分治思想的另一体现  优化方式是随机打乱 因为最坏情况下是n^2
 var sortArray = function (nums) {
     const swap = (nums, i, j) => {
         let temp = nums[i];
@@ -190,8 +190,6 @@ var sortArray = function (nums) {
     sort(nums, 0, nums.length - 1)
 };
 
-let nums = [3,8,7,12,1,9]
-sortArray(nums)
 
 /* 
 后面还有堆 计数 桶 基数 先不管了
