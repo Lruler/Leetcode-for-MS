@@ -190,7 +190,6 @@ var sortArray = function (nums) {
     sort(nums, 0, nums.length - 1)
 };
 
-
 /* 
 后面还有堆 计数 桶 基数 先不管了
 */
