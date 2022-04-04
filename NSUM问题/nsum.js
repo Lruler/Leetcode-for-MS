@@ -76,3 +76,36 @@ const nSumTarget = (nums, n, start, target) => {
     }
     return res
 }
+
+
+// https://leetcode-cn.com/problems/3sum-closest/ 最接近的三数之和
+const twoSumClosest = (nums, start, target) => {
+    let lo = start,
+        hi = nums.length;
+    let delta = Infinity;
+    while (lo < hi) {
+        let sum = nums[lo] + nums[hi];
+        if (Math.abs(delta) > Math.abs(target - sum)) {
+            delta = target - sum;
+        }
+        if (sum < target) {
+            lo++;
+        } else {
+            hi--;
+        }
+    }
+    return target - delta;
+}
+
+var threeSumClosest = function (nums, target) {
+    if (nums.length < 3) return 0;
+    nums.sort((a, b) => a - b);
+    let delta = Infinity;
+    for (let i = 0; i < nums.length - 2; ++i) {
+        let sum = nums[i] + twoSum(nums, i + 1, target - nums[i])
+        if (Math.abs(delta) > Math.abs(target - sum)) {
+            delta = target - sum;
+        }
+    }
+    return target - delta
+};
