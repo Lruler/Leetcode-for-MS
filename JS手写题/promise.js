@@ -159,6 +159,7 @@ Promise.prototype.all = function (promises) {
         }
     });
 };
+
 Promise.race = (promiseArray) => {
     return new Promise((resolve, reject) => {
         promiseArray.forEach((item) => {

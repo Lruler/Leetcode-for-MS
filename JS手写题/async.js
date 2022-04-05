@@ -73,3 +73,37 @@ function asyncToGenerator(generatorFunc) {
 
 
 
+
+
+
+function asyncToGen(genFunction) {
+    return function (...args) {
+        const gen = genFunction.apply(this, args);
+        return new Promise((resolve, reject) => {
+            function step(key, arg) {
+                let genResult;
+                try {
+                    genResult = gen[key](arg);
+                } catch (err) {
+                    return reject(err);
+                }
+                const {
+                    value,
+                    done
+                } = genResult;
+                if (done) {
+                    return resolve(value);
+                }
+                return Promise.resolve(value).then(
+                    (val) => {
+                        step('next', val);
+                    },
+                    (err) => {
+                        step('throw', err);
+                    },
+                );
+            }
+            step('next');
+        });
+    };
+}
