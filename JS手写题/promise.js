@@ -1,7 +1,7 @@
 /* 
 Promise 和 Promise实例要区分
 Promise.resolve() 返回一个状态resolved的Promise实例，该方法是幂等的，也就是说 let p = Promise.resolve(); p = Promise.resolve(p)
-其中 resolve只接受一个参数，他会把任何参数都封装成一个新的Promise，而如果传入的参数本身就是Promise实例，则空包装直接返回(状态为resolve)
+其中 resolve只接受一个参数，他会把任何参数都封装成一个新的Promise，而如果传入的参数本身就是Promise实例，则空包装直接返回
 Promise.reject() 逻辑和resolve大体相同，唯一不同的是，如果reject接受的参数是一个Promise，那不会空包装返回，会把这个Promise作为他返回
 的新的rejected的Promise的值。
 
