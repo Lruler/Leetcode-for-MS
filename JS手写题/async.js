@@ -107,3 +107,28 @@ function asyncToGen(genFunction) {
         });
     };
 }
+
+const asy = (fn) => {
+    return function () {
+        const iterb = fn.apply(this, arguments)
+        return new Promise((resolve, reject) => {
+            const step = (key, arg) => {
+                let rlt;
+                try {
+                    rlt = iterb[key](arg)
+                } catch (err) {
+                    return reject(err)
+                }
+                const { value, done } = rlt;
+                if (done) return resolve(value)
+                return Promise.resolve(value).then((val) => {
+                    step('next', val)
+                }),
+                    (err) => {
+                        step('throw', err)
+                }
+            }
+        })
+    }
+}
+

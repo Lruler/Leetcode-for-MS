@@ -123,3 +123,54 @@ var largestValues = function (root, res = []) {
     }
     return res
 };
+
+// 递归改迭代
+
+// 前序遍历
+const preorderTraversal = function (root) {
+    const stack = [],
+        res = []
+    root && stack.push(root)
+    // 使用一个栈stack，每次首先输出栈顶元素，也就是当前二叉树根节点，之后依次输出二叉树的左孩子和右孩子
+    while (stack.length > 0) {
+        let cur = stack.pop()
+        res.push(cur.val)
+        // 先入栈的元素后输出，所以先入栈当前节点右孩子，再入栈左孩子
+        cur.right && stack.push(cur.right)
+        cur.left && stack.push(cur.left)
+    }
+    return res
+};
+
+// 中序遍历
+ const inorderTraversal = function (root) {
+     const res = [],
+         stack = []
+     let node = root;
+     while (stack.length > 0 || node !== null) {
+         // 这里用当前节点node是否存在，简化代码，
+         if (node) {
+             stack.push(node);
+             node = node.left
+         } else {
+             node = stack.pop();
+             res.push(node.val);
+             node = node.right;
+         }
+     }
+     return res;
+ };
+
+ // 后序遍历
+ // 后序其实就是前序的逆向思路 
+ const postorderTraversal = function (root) {
+     const res = [],
+         stack = []
+     while (root || stack.length) {
+         res.unshift(root.val)
+         root.left && stack.push(root.left)
+         root.right && stack.push(root.right)
+         root = stack.pop()
+     }
+     return res
+ };

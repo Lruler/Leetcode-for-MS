@@ -1,238 +1,320 @@
-// 归并
-const merge = (left, right) => {
-    const res = [];
-    while (left.length && right.length) {
-        if (left[0] <= right[0]) res.push(left.shift());
-        else res.push(right.shift())
-    }
-    while (left.length) res.push(left.shift())
-    while (right.length) res.push(right.shift())
-    return res
+
+function createElement(type, props, ...children) {
+  return {
+    type,
+    props: {
+      ...props,
+      children: children.map(child =>
+        typeof child === "object"
+          ? child
+          : createTextElement(child)
+      ),
+    },
+  }
 }
-
-const mergeSort = (nums) => {
-    const len = nums.length;
-    if (len <= 1) return nums;
-
-    const mid = len >> 1;
-    const left = nums.slice(0, mid);
-    const right = nums.slice(mid, len);
-
-    const leftSort = mergeSort(left);
-    const rightSort = mergeSort(right);
-
-    return merge(leftSort, rightSort)
+​
+function createTextElement(text) {
+  return {
+    type: "TEXT_ELEMENT",
+    props: {
+      nodeValue: text,
+      children: [],
+    },
+  }
 }
-
-let nums = [2, 7, 9, 1, 8, 5, 3, 12, 4]
-// 快排
-
-const quickSort = (nums) => {
-    const swap = (nums, i, j) => {
-        let temp = nums[i]
-        nums[i] = nums[j]
-        nums[j] = temp
-    }
-    const sort = (nums, lo, hi) => {
-        if (lo >= hi) return
-        const partition = (nums, lo, hi) => {
-            let p = nums[lo];
-            let i = lo + 1,
-                j = hi;
-
-            while (i <= j) {
-                while (i < hi && nums[i] <= p) i++
-                while (j > lo && nums[j] > p) j--
-                if (i >= j) break;
-                swap(nums, i, j)
-            }
-            swap(nums, lo, j)
-            return j
-        }
-
-
-        // p作为基准，此时p已经排序过了 所以后面不需要排序p
-        const p = partition(nums, lo, hi)
-        sort(nums, lo, p - 1);
-        sort(nums, p + 1, hi)
-    }
-    sort(nums, 0, nums.length - 1)
+​
+function createDom(fiber) {
+  const dom =
+    fiber.type == "TEXT_ELEMENT"
+      ? document.createTextNode("")
+      : document.createElement(fiber.type)
+​
+  updateDom(dom, {}, fiber.props)
+​
+  return dom
 }
-
-// curry
-
-const curry = (fn, ...args) => {
-    return fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args)
-}
-
-// 深拷贝 (注意  这不能拷贝Symbol 键)
-const deepClone = (obj) => {
-    if (!obj || typeof obj !== 'object') return
-    let newObj = Array.isArray(obj) ? [] : {};
-
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) newObj[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
-    }
-    return newObj
-}
-
-// new
-const myNew = (constructor) => {
-    let newObj = {};
-    newObj.__proto__ = constructor.prototype
-    let res = constructor.call(newObj)
-    return res instanceof Object ? res : newObj
-}
-
-// 防抖
-function debounce(fn, wait) {
-    let timer = null;
-
-    return function () {
-        let context = this,
-            args = arguments
-
-        if (timer) {
-            clearTimeout(timer);
-            timer = null
-        }
-
-        timer = setTimeout(() => {
-            fn.apply(context, args)
-        }, wait)
-    }
-}
-
-// 节流
-
-function throttle(fn, wait) {
-    let timer = null;
-
-    return function () {
-        let context = this,
-            args = arguments;
-        if (timer) return;
-        timer = setTimeout(() => {
-            fn.apply(context, args)
-            timer = null
-        }, wait)
-    }
-}
-
-// Promise
-
-const PENDING = 'PENDING'
-const FULFILLED = 'FULFILLED'
-const REJECTED = 'REJECTED'
-
-class MyPromise {
-    constructor(executor) {
-        this.status = PENDING;
-        this.value = undefined;
-        this.reason = undefined;
-
-        this.onFufilledCallbacks = [];
-        this.onRejectedCallbacks = [];
-
-        const resolve = (value) => {
-            if (value instanceof Promise) return value.then(resolve, reject)
-            if (this.status == PENDING) {
-                this.status == FULFILLED;
-                this.value = value;
-                this.onFufilledCallbacks.forEach(fn => fn())
-            }
-        }
-
-        const reject = (reason) => {
-            if (this.status == PENDING) {
-                this.status == REJECTED;
-                this.reason == reason;
-                this.onRejectedCallbacks.forEach(fn => fn())
-            }
-        }
-
-        try {
-            executor(resolve, reject)
-        } catch (error) {
-            reject(error)
-        }
-    }
-
-    then(onFufilled, onRejected) {
-        let newPromise;
-        if (this.status === FULFILLED) {
-            return newPromise = new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    try {
-                        let result = onFufilled(this.value)
-                        resolve(result)
-                    } catch (error) {
-                        reject(error)
-                    }
-                })
-            })
-        }
-
-        if (this.status === REJECTED) {
-            return newPromise = new Promise((resovle, reject) => {
-                setTimeout(() => {
-                    try {
-                        let result = onRejected(this.reason)
-                        resovle(result);
-                    } catch (error) {
-                        reject(error);
-                    }
-                })
-            })
-        }
-
-        if (this.status === PENDING) {
-            return newPromise = new Promise((resovle, reject) => {
-                setTimeout(() => {
-                    this.onResolvedCallbacks.push(() => {
-                        try {
-                            let result = onFulfilled(this.value);
-                            resovle(result);
-                        } catch (error) {
-                            reject(error);
-                        }
-                    });
-                    this.onRejectedCallbacks.push(() => {
-                        try {
-                            let result = onRejected(this.reason)
-                            resovle(result);
-                        } catch (error) {
-                            reject(error);
-                        }
-                    });
-                })
-            })
-        }
-    }
-
-    static resolve(value) {
-        return new Promise((resolve, reject) => {
-            resolve(value)
-        })
-    }
-
-    static reject(reason) {
-        return new Promise((resolve, reject) => {
-            reject(reason)
-        })
-    }
-
-    catch (errcallback) {
-        return this.then(null, errcallback)
-    }
-}
-
-MyPromise.prototype.finally = (callback) => {
-    return this.then((value) => {
-        return Promise.resolve(callback()).then(() => value)
-    }, (reason) => {
-        return Promise.resolve(callback()).then(() => {
-            throw reason
-        })
+​
+const isEvent = key => key.startsWith("on")
+const isProperty = key =>
+  key !== "children" && !isEvent(key)
+const isNew = (prev, next) => key =>
+  prev[key] !== next[key]
+const isGone = (prev, next) => key => !(key in next)
+function updateDom(dom, prevProps, nextProps) {
+  //Remove old or changed event listeners
+  Object.keys(prevProps)
+    .filter(isEvent)
+    .filter(
+      key =>
+        !(key in nextProps) ||
+        isNew(prevProps, nextProps)(key)
+    )
+    .forEach(name => {
+      const eventType = name
+        .toLowerCase()
+        .substring(2)
+      dom.removeEventListener(
+        eventType,
+        prevProps[name]
+      )
+    })
+​
+  // Remove old properties
+  Object.keys(prevProps)
+    .filter(isProperty)
+    .filter(isGone(prevProps, nextProps))
+    .forEach(name => {
+      dom[name] = ""
+    })
+​
+  // Set new or changed properties
+  Object.keys(nextProps)
+    .filter(isProperty)
+    .filter(isNew(prevProps, nextProps))
+    .forEach(name => {
+      dom[name] = nextProps[name]
+    })
+​
+  // Add event listeners
+  Object.keys(nextProps)
+    .filter(isEvent)
+    .filter(isNew(prevProps, nextProps))
+    .forEach(name => {
+      const eventType = name
+        .toLowerCase()
+        .substring(2)
+      dom.addEventListener(
+        eventType,
+        nextProps[name]
+      )
     })
 }
+​
+function commitRoot() {
+  deletions.forEach(commitWork)
+  commitWork(wipRoot.child)
+  currentRoot = wipRoot
+  wipRoot = null
+}
+​
+function commitWork(fiber) {
+  if (!fiber) {
+    return
+  }
+​
+  let domParentFiber = fiber.parent
+  while (!domParentFiber.dom) {
+    domParentFiber = domParentFiber.parent
+  }
+  const domParent = domParentFiber.dom
+​
+  if (
+    fiber.effectTag === "PLACEMENT" &&
+    fiber.dom != null
+  ) {
+    domParent.appendChild(fiber.dom)
+  } else if (
+    fiber.effectTag === "UPDATE" &&
+    fiber.dom != null
+  ) {
+    updateDom(
+      fiber.dom,
+      fiber.alternate.props,
+      fiber.props
+    )
+  } else if (fiber.effectTag === "DELETION") {
+    commitDeletion(fiber, domParent)
+  }
+​
+  commitWork(fiber.child)
+  commitWork(fiber.sibling)
+}
+​
+function commitDeletion(fiber, domParent) {
+  if (fiber.dom) {
+    domParent.removeChild(fiber.dom)
+  } else {
+    commitDeletion(fiber.child, domParent)
+  }
+}
+​
+function render(element, container) {
+  wipRoot = {
+    dom: container,
+    props: {
+      children: [element],
+    },
+    alternate: currentRoot,
+  }
+  deletions = []
+  nextUnitOfWork = wipRoot
+}
+​
+let nextUnitOfWork = null
+let currentRoot = null
+let wipRoot = null
+let deletions = null
+​
+function workLoop(deadline) {
+  let shouldYield = false
+  while (nextUnitOfWork && !shouldYield) {
+    nextUnitOfWork = performUnitOfWork(
+      nextUnitOfWork
+    )
+    shouldYield = deadline.timeRemaining() < 1
+  }
+​
+  if (!nextUnitOfWork && wipRoot) {
+    commitRoot()
+  }
+​
+  requestIdleCallback(workLoop)
+}
+​
+requestIdleCallback(workLoop)
+​
+function performUnitOfWork(fiber) {
+  const isFunctionComponent =
+    fiber.type instanceof Function
+  if (isFunctionComponent) {
+    updateFunctionComponent(fiber)
+  } else {
+    updateHostComponent(fiber)
+  }
+  if (fiber.child) {
+    return fiber.child
+  }
+  let nextFiber = fiber
+  while (nextFiber) {
+    if (nextFiber.sibling) {
+      return nextFiber.sibling
+    }
+    nextFiber = nextFiber.parent
+  }
+}
+​
+let wipFiber = null
+let hookIndex = null
+​
+function updateFunctionComponent(fiber) {
+  wipFiber = fiber
+  hookIndex = 0
+  wipFiber.hooks = []
+  const children = [fiber.type(fiber.props)]
+  reconcileChildren(fiber, children)
+}
+​
+function useState(initial) {
+  const oldHook =
+    wipFiber.alternate &&
+    wipFiber.alternate.hooks &&
+    wipFiber.alternate.hooks[hookIndex]
+  const hook = {
+    state: oldHook ? oldHook.state : initial,
+    queue: [],
+  }
+​
+  const actions = oldHook ? oldHook.queue : []
+  actions.forEach(action => {
+    hook.state = action(hook.state)
+  })
+​
+  const setState = action => {
+    hook.queue.push(action)
+    wipRoot = {
+      dom: currentRoot.dom,
+      props: currentRoot.props,
+      alternate: currentRoot,
+    }
+    nextUnitOfWork = wipRoot
+    deletions = []
+  }
+​
+  wipFiber.hooks.push(hook)
+  hookIndex++
+  return [hook.state, setState]
+}
+​
+function updateHostComponent(fiber) {
+  if (!fiber.dom) {
+    fiber.dom = createDom(fiber)
+  }
+  reconcileChildren(fiber, fiber.props.children)
+}
+​
+function reconcileChildren(wipFiber, elements) {
+  let index = 0
+  let oldFiber =
+    wipFiber.alternate && wipFiber.alternate.child
+  let prevSibling = null
+​
+  while (
+    index < elements.length ||
+    oldFiber != null
+  ) {
+    const element = elements[index]
+    let newFiber = null
+​
+    const sameType =
+      oldFiber &&
+      element &&
+      element.type == oldFiber.type
+​
+    if (sameType) {
+      newFiber = {
+        type: oldFiber.type,
+        props: element.props,
+        dom: oldFiber.dom,
+        parent: wipFiber,
+        alternate: oldFiber,
+        effectTag: "UPDATE",
+      }
+    }
+    if (element && !sameType) {
+      newFiber = {
+        type: element.type,
+        props: element.props,
+        dom: null,
+        parent: wipFiber,
+        alternate: null,
+        effectTag: "PLACEMENT",
+      }
+    }
+    if (oldFiber && !sameType) {
+      oldFiber.effectTag = "DELETION"
+      deletions.push(oldFiber)
+    }
+​
+    if (oldFiber) {
+      oldFiber = oldFiber.sibling
+    }
+​
+    if (index === 0) {
+      wipFiber.child = newFiber
+    } else if (element) {
+      prevSibling.sibling = newFiber
+    }
+​
+    prevSibling = newFiber
+    index++
+  }
+}
+​
+const Didact = {
+  createElement,
+  render,
+  useState,
+}
+​
+/** @jsx Didact.createElement */
+function Counter() {
+  const [state, setState] = Didact.useState(1)
+  return (
+    <h1 onClick={() => setState(c => c + 1)}>
+      Count: {state}
+    </h1>
+  )
+}
+const element = <Counter />
+const container = document.getElementById("root")
+Didact.render(element, container)

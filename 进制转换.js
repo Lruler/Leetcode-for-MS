@@ -42,4 +42,5 @@ var intersection = function (nums1, nums2) {
     return res
 };
 
-intersection([1,2,2,1], [2,3])
+
+let a = [1, 2, 3, 4, 5];
