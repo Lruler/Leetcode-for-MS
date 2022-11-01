@@ -42,7 +42,7 @@ const traverse = (graph, v) => {
 
 
 /* 
-T785 mid https://leetcode-cn.com/problems/is-graph-bipartite/
+T785 mid https://leetcode.cn/problems/is-graph-bipartite/
 判断二分图 也能有BFS改写 这里就不用了 还是优先DFS 
 */
 
@@ -74,7 +74,7 @@ var isBipartite = function (graph) {
 
 
 /* 
-T886 MID https://leetcode-cn.com/problems/possible-bipartition/
+T886 MID https://leetcode.cn/problems/possible-bipartition/
 可能的二分法  就是 构建图 然后判断是否是二分图就行
 */
 const possibleBipartition = (N, dislikes) => {

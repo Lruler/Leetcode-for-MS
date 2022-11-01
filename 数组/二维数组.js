@@ -1,6 +1,6 @@
 
 /* 
-T48 MID https://leetcode-cn.com/problems/rotate-image/
+T48 MID https://leetcode.cn/problems/rotate-image/
 旋转图像 就是90 度反转矩阵， 先取对角线镜像对称 然后反转每一行
 */
 
@@ -22,7 +22,7 @@ var rotate = function (matrix) {
 
 
 /* 
-T54 MID https://leetcode-cn.com/problems/spiral-matrix/
+T54 MID https://leetcode.cn/problems/spiral-matrix/
 螺旋矩阵
 */
 
@@ -59,7 +59,7 @@ var spiralOrder = function (matrix) {
 };
 
 /* 
-T59 Mid https://leetcode-cn.com/problems/spiral-matrix-ii/
+T59 Mid https://leetcode.cn/problems/spiral-matrix-ii/
 生成螺旋矩阵
 */
 var generateMatrix = function (n) {

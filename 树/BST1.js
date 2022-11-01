@@ -4,7 +4,7 @@
 */
 
 /* 
-T230 https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/
+T230 https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
 二叉搜索树第k小的元素
 */
 
@@ -22,7 +22,7 @@ var kthSmallest = function (root, k) {
 
 
 /* 
-t538 https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/
+t538 https://leetcode.cn/problems/binary-search-tree-to-greater-sum-tree/
 把BST转换成累加树
 */
 var bstToGst = function (root) {

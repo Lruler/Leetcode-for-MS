@@ -32,7 +32,7 @@ const BFS = (Node start, Node target) => {
 
 
 /* 
-T752 mid https://leetcode-cn.com/problems/open-the-lock/
+T752 mid https://leetcode.cn/problems/open-the-lock/
 用BFS框架 思路很简单 要考究的地方是死亡字典 和 八个“邻接节点”的枚举
 */
 var openLock = function (deadends, target) {
@@ -145,7 +145,7 @@ const openLock = (deadends, target) => {
 
 
 /* 
-T111 https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/
+T111 https://leetcode.cn/problems/minimum-depth-of-binary-tree/
 给定一个二叉树， 找出其最小深度。
 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
 说明： 叶子节点是指没有子节点的节点。

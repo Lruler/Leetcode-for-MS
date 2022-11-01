@@ -5,7 +5,7 @@ Trie树，字典树，前缀树，单词查找树，由二叉树衍生，主要�
 */
 
 /* 
-T208 https://leetcode-cn.com/problems/implement-trie-prefix-tree/
+T208 https://leetcode.cn/problems/implement-trie-prefix-tree/
 构造Trie
 */
 
@@ -46,7 +46,7 @@ Trie.prototype.startsWith = function (prefix) {
 
 
 /* 
-T648 MID https://leetcode-cn.com/problems/replace-words/submissions/
+T648 MID https://leetcode.cn/problems/replace-words/submissions/
 单词替换 就是求单词的前缀
 */
 var replaceWords = function (dictionary, sentence) {
@@ -101,7 +101,7 @@ class Trie {
 }
 
 /* 
-T211 MID https://leetcode-cn.com/problems/design-add-and-search-words-data-structure/
+T211 MID https://leetcode.cn/problems/design-add-and-search-words-data-structure/
 构造词典 就是做出模式匹配(类似正则)
 */
 
@@ -190,6 +190,6 @@ WordDictionary.prototype.search = function (word) {
 
 
 /* 
-677 MId https://leetcode-cn.com/problems/map-sum-pairs/
+677 MId https://leetcode.cn/problems/map-sum-pairs/
 键值映射 前面都是只考虑前缀 即树枝 没考虑节点 这个就是把节点也加上了
 */

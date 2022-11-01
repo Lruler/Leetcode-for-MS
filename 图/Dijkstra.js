@@ -11,7 +11,7 @@ const dijkstra = (start, end, graph) => {
 */
 
 /* 
-T743 MID https://leetcode-cn.com/problems/network-delay-time/
+T743 MID https://leetcode.cn/problems/network-delay-time/
 把网络延迟看作边的权重
 */
 class State {
@@ -81,7 +81,7 @@ var dijkstra = function (start, graph) {
 	return distTo;
 }
 /* 
-T1631 https://leetcode-cn.com/problems/path-with-minimum-effort/
+T1631 https://leetcode.cn/problems/path-with-minimum-effort/
 MID
 */
 
@@ -260,7 +260,7 @@ function dijkstra(heights) {
 
 
 /* 
-T1514 https://leetcode-cn.com/problems/path-with-maximum-probability/
+T1514 https://leetcode.cn/problems/path-with-maximum-probability/
 */
 
 	function maxProbability(

@@ -1,4 +1,4 @@
-// https://leetcode-cn.com/problems/capacity-to-ship-packages-within-d-days/
+// https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/
 var shipWithinDays = function (weights, days) {
     // 确定二分查找左右边界
     let left = Math.max(...weights),

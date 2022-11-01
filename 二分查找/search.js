@@ -78,7 +78,7 @@ var mySqrt = function (x) {
 };
 
 /* 
-T34 mid https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+T34 mid https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
  给定一个增序的整数数组和一个值， 查找该值第一次和最后一次出现的位置。
  Input: nums = [5, 7, 7, 8, 8, 10], target = 8
  Output: [3, 4]
@@ -113,7 +113,7 @@ var searchRange = function (nums, target) {
 };
 
 // 旋转数组解法 https://juejin.cn/post/6844903824050618381
-// T33 https://leetcode-cn.com/problems/search-in-rotated-sorted-array/  元素不重复
+// T33 https://leetcode.cn/problems/search-in-rotated-sorted-array/  元素不重复
 const search = function (nums, target) {
     if (!nums.length) return -1
     let left = 0,
@@ -141,7 +141,7 @@ const search = function (nums, target) {
     return -1
 }
 /* 
-T81 mid https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/
+T81 mid https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/
 Input: nums = [2, 5, 6, 0, 0, 1, 2], target = 0
 Output: true
 */
@@ -176,7 +176,7 @@ const search2 = function (nums, target) {
     return false
 }
 
-// T153 https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/ 元素不重复
+// T153 https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/ 元素不重复
 const findMin = function (nums) {
     if (!nums.length) return null
     if (nums.length === 1) return nums[0]
@@ -203,14 +203,14 @@ const findMin = function (nums) {
 }
 
 /* 
-T154 Hard https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/
+T154 Hard https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/
 就是n次旋转后的数组找出最小值 元素重复
 */ 
 
 /* 
 当mid是偶数 mid & 1 = 0
 当mid是基数 mid & 1 = 1
-T540 mid https://leetcode-cn.com/problems/single-element-in-a-sorted-array/
+T540 mid https://leetcode.cn/problems/single-element-in-a-sorted-array/
 给你一个仅由整数组成的有序数组， 其中每个元素都会出现两次， 唯有一个数只会出现一次。
 请你找出并返回只出现一次的那个数。
 输入: nums = [1, 1, 2, 3, 3, 4, 4, 8, 8]
@@ -235,7 +235,7 @@ var singleNonDuplicate = function (nums) {
 
 
 /* 
-T4 hard https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
+T4 hard https://leetcode.cn/problems/median-of-two-sorted-arrays/
 给定两个大小分别为 m 和 n 的正序（ 从小到大） 数组 nums1 和 nums2。 请你找出并返回这两个正序数组的 中位数。
 输入： nums1 = [1, 3], nums2 = [2]
 输出： 2.00000

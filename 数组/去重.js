@@ -1,4 +1,4 @@
-// T316 MID https://leetcode-cn.com/problems/remove-duplicate-letters/
+// T316 MID https://leetcode.cn/problems/remove-duplicate-letters/
 
 var removeDuplicateLetters = function (s) {
     const vis = new Array(26).fill(0);

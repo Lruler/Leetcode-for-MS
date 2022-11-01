@@ -3,12 +3,12 @@
 // 对链表操作 几乎都是递归/迭代   对值操作 哈希/双指针等
 
 /* 
-T206 easy https://leetcode-cn.com/problems/reverse-linked-list/
+T206 easy https://leetcode.cn/problems/reverse-linked-list/
 反转链表 简单 迭代/递归 都行
 */
 
 /* 
-T92 mid https://leetcode-cn.com/problems/reverse-linked-list-ii/
+T92 mid https://leetcode.cn/problems/reverse-linked-list-ii/
 反转链表 II
  */
 // 反转前n个节点
@@ -31,7 +31,7 @@ var reverseBetween = function (head, left, right) {
 };
 
 /* 
-T25 HARD !!!! https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+T25 HARD !!!! https://leetcode.cn/problems/reverse-nodes-in-k-group/
 K 个一组翻转链表e
 */
 var reverseKGroup = function (head, k) {
@@ -78,13 +78,13 @@ var reverseKGroup = function (head, k) {
 
 
 /* 
-T21 https://leetcode-cn.com/problems/merge-two-sorted-lists/
+T21 https://leetcode.cn/problems/merge-two-sorted-lists/
 合并两个有序链表 easy  也是迭代/递归
 */
 
 
 /* 
-T23 **** HARD 合并k个有序列表 https://leetcode-cn.com/problems/merge-k-sorted-lists/
+T23 **** HARD 合并k个有序列表 https://leetcode.cn/problems/merge-k-sorted-lists/
  用 优先队列(二叉堆) 实现
 */
 class MinHeap {
@@ -174,17 +174,17 @@ var mergeKLists = function (lists) {
 
 
 /* 
-T24 https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+T24 https://leetcode.cn/problems/swap-nodes-in-pairs/
 两两交换相邻节点 也是迭代/递归
 */
 
 /* 
-T160 https://leetcode-cn.com/problems/intersection-of-two-linked-lists/solution/
+T160 https://leetcode.cn/problems/intersection-of-two-linked-lists/solution/
 相交链表找出相交的点  哈希/双指针
 */
 
 /* 
-T234 https://leetcode-cn.com/problems/palindrome-linked-list/solution/
+T234 https://leetcode.cn/problems/palindrome-linked-list/solution/
 回文链表 转换成数组判断是否回文/递归 递归就用栈来思考 能想明白
 */
 
@@ -210,13 +210,13 @@ var isPalindrome = function (head) {
 
 
 /* 
-T83 https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+T83 https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
 删除列表的重复元素 eazy 线性遍历直接过
 */
 
 
 /* 
-T328 mid https://leetcode-cn.com/problems/odd-even-linked-list/
+T328 mid https://leetcode.cn/problems/odd-even-linked-list/
 输入: head = [1, 2, 3, 4, 5]
 输出: [1, 3, 5, 2, 4]
 就是把奇数和偶数分组
@@ -224,23 +224,23 @@ T328 mid https://leetcode-cn.com/problems/odd-even-linked-list/
 
 
 /* 
-T19 https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
+T19 https://leetcode.cn/problems/remove-nth-node-from-end-of-list/
 删除改链表第n个节点 快慢指针
 */
 
 /* 
-T148 https://leetcode-cn.com/problems/sort-list/
+T148 https://leetcode.cn/problems/sort-list/
 升序排序列表  自顶向下归并  自低向上归并 即一个递归一个迭代
 */
 
 /* 
-T876 easy https://leetcode-cn.com/problems/middle-of-the-linked-list/
+T876 easy https://leetcode.cn/problems/middle-of-the-linked-list/
 找到链表中间节点
 */
 
 
 /* 
-T141 https://leetcode-cn.com/problems/linked-list-cycle/submissions/
+T141 https://leetcode.cn/problems/linked-list-cycle/submissions/
 easy 判断链表是否有环
 */
 

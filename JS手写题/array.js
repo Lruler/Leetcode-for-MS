@@ -77,3 +77,23 @@ function flatten(arr) {
 function flatten(arr) {
     return arr.toString().split(',');
 }
+
+//求数组深度
+const arrayDepth = function (arr) {
+    let count = 0;
+    let res = [];
+
+    const help = function (arr, dep) {
+        for (let val of arr) {
+            if (val instanceof Array) {
+                help(val, dep + 1);
+            } else {
+                res.push(val);
+                count = Math.max(count, dep)
+            }
+        }
+    }
+
+    help(arr, 1);
+    return count;
+}

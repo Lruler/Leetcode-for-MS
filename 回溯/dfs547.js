@@ -1,4 +1,4 @@
-// https://leetcode-cn.com/problems/number-of-provinces/submissions/
+// https://leetcode.cn/problems/number-of-provinces/submissions/
 
 // 递归
 var findCircleNumDfs = function (isConnected) {

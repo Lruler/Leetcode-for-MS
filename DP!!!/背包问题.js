@@ -24,7 +24,7 @@ int knapsack(int W, int N, int[] wt, int[] val) {
 */
 
 /* 
-T416 https://leetcode-cn.com/problems/partition-equal-subset-sum/
+T416 https://leetcode.cn/problems/partition-equal-subset-sum/
 MID 分割背包问题
 */
 
@@ -69,7 +69,7 @@ var canPartition = function (nums) {
 
 /* 
 完全背包问题
-T518 mid https://leetcode-cn.com/problems/coin-change-2/
+T518 mid https://leetcode.cn/problems/coin-change-2/
 */
 var change = function (amount, coins) {
     const n = coins.length;

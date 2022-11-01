@@ -1,4 +1,4 @@
-// 695 https://leetcode-cn.com/problems/max-area-of-island/
+// 695 https://leetcode.cn/problems/max-area-of-island/
 
 // 深度优先
 var maxAreaOfIslandDfs = function (grid) {

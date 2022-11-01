@@ -1,5 +1,5 @@
 /* 
-T198 mid https://leetcode-cn.com/problems/house-robber/ 
+T198 mid https://leetcode.cn/problems/house-robber/ 
 打家劫舍I
 
 站在 i 面前 两个选择 抢 还是 不抢，  抢了 之后 钱就多 去下下家，不抢 钱不变 去下家
@@ -32,7 +32,7 @@ var rob2 = function (nums) {
 
 
 /* 
-T213 mid https://leetcode-cn.com/problems/house-robber-ii/
+T213 mid https://leetcode.cn/problems/house-robber-ii/
 打家劫舍II 数组变成环形数组
 那考虑抢第一间 和抢最后一间谁大就行
 */
@@ -56,7 +56,7 @@ var robII = function (nums) {
 
 
 /* 
-T337 MID https://leetcode-cn.com/problems/house-robber-iii/
+T337 MID https://leetcode.cn/problems/house-robber-iii/
 打家劫舍III 因为是二叉树 所以采取递归的形式(也可以改写成dp table)
 */
 

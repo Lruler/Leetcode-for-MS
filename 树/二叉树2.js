@@ -4,7 +4,7 @@
 */
 
 /* 
-T654 https://leetcode-cn.com/problems/maximum-binary-tree/
+T654 https://leetcode.cn/problems/maximum-binary-tree/
 构造最大二叉树
 */
 
@@ -26,7 +26,7 @@ var constructMaximumBinaryTree = function (nums) {
 
 
 /* 
-T105 https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+T105 https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 根据前序和中序 序列 构造二叉树
 */
 
@@ -44,7 +44,7 @@ var buildTree = function (preorder, inorder) {
 };
 
 /* 
-T106 https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+T106 https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
 根据后序和中序 构造二叉树
 */
 var buildTree = function (inorder, postorder) {
@@ -59,7 +59,7 @@ var buildTree = function (inorder, postorder) {
 
 
 /* 
-T889 https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
+T889 https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
 通过前序和后序生成二叉树
 */
 

@@ -1,5 +1,5 @@
 /* 
-逆序对 HARD https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
+逆序对 HARD https://leetcode.cn/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
 */
 
 var reversePairs = function (nums) {
@@ -36,7 +36,7 @@ var reversePairs = function (nums) {
     return cnt;
 };
 /* 
-T315 HARD https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/
+T315 HARD https://leetcode.cn/problems/count-of-smaller-numbers-after-self/
 计算右侧小于当前元素的个数 
 输入： nums = [5, 2, 6, 1]
 输出：[2, 1, 1, 0]
@@ -108,7 +108,7 @@ function merge(nums, left, mid, right) {
 
 
 /* 
-T493  HARD https://leetcode-cn.com/problems/reverse-pairs/
+T493  HARD https://leetcode.cn/problems/reverse-pairs/
 翻转对 不仅要大 还要大于它的两倍
 */
 
@@ -167,7 +167,7 @@ const reversePairsRecursive = (nums, left, right) => {
 
 
 /* 
-T327 HARD https://leetcode-cn.com/problems/count-of-range-sum/
+T327 HARD https://leetcode.cn/problems/count-of-range-sum/
 区间和的个数
 */
 

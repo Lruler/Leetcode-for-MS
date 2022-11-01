@@ -25,7 +25,7 @@ const twoSum = (nums, t, start = 0) => {
 
 
 /* 
-T15 https://leetcode-cn.com/problems/3sum/
+T15 https://leetcode.cn/problems/3sum/
 Mid 3数之和
 */
 
@@ -36,7 +36,7 @@ var threeSum = function (nums) {
 
 
 /* 
-T15 https://leetcode-cn.com/problems/4sum/submissions/
+T15 https://leetcode.cn/problems/4sum/submissions/
 Mid 四数之和
 */
 
@@ -78,7 +78,7 @@ const nSumTarget = (nums, n, start, target) => {
 }
 
 
-// https://leetcode-cn.com/problems/3sum-closest/ 最接近的三数之和
+// https://leetcode.cn/problems/3sum-closest/ 最接近的三数之和
 const twoSumClosest = (nums, start, target) => {
     let lo = start,
         hi = nums.length;

@@ -1,4 +1,4 @@
-// https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+// https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
 
 // 求两颗二叉树最近的公共祖先
 

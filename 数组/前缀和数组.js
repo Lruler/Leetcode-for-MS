@@ -5,7 +5,7 @@
 
 
 /* 
-T303 easy https://leetcode-cn.com/problems/range-sum-query-immutable/
+T303 easy https://leetcode.cn/problems/range-sum-query-immutable/
 实现一个前缀和数组
 */
 
@@ -24,7 +24,7 @@ NumArray.prototype.sumRange = function (i, j) {
 
 
 /* 
-T304 Mid https://leetcode-cn.com/problems/range-sum-query-2d-immutable/
+T304 Mid https://leetcode.cn/problems/range-sum-query-2d-immutable/
 二维的前缀和数组 以原点为左上角的点计算
 */
 
@@ -48,7 +48,7 @@ NumMatrix.prototype.sumRegion = function (row1, col1, row2, col2) {
 
 
 /* 
-T560 Mid https://leetcode-cn.com/problems/subarray-sum-equals-k/
+T560 Mid https://leetcode.cn/problems/subarray-sum-equals-k/
 */
 var subarraySum = function (nums, k) {
     let n = nums.length;

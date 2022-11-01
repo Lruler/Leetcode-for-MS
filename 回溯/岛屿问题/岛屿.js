@@ -27,7 +27,7 @@ void dfs(int[][] grid, int i, int j, boolean[] visited) {
 */
 
 
-// T200 MID https://leetcode-cn.com/problems/number-of-islands/
+// T200 MID https://leetcode.cn/problems/number-of-islands/
 
 const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
@@ -58,7 +58,7 @@ const numIsLands = (grid) => {
 
 
 
-// T1254 MID https://leetcode-cn.com/problems/number-of-closed-islands/
+// T1254 MID https://leetcode.cn/problems/number-of-closed-islands/
 var closedIsland = function (grid) {
     let res = 0;
     let m = grid.length,
@@ -93,7 +93,7 @@ var closedIsland = function (grid) {
     return res
 };
 
-// T1020 MID https://leetcode-cn.com/problems/number-of-enclaves/
+// T1020 MID https://leetcode.cn/problems/number-of-enclaves/
 
 var numEnclaves = function (grid) {
     let res = 0;
@@ -128,7 +128,7 @@ var numEnclaves = function (grid) {
     return res
 };
 
-// T695 MID https://leetcode-cn.com/problems/max-area-of-island/
+// T695 MID https://leetcode.cn/problems/max-area-of-island/
 
 var maxAreaOfIsland = function (grid) {
     let res = 0;
@@ -158,7 +158,7 @@ var maxAreaOfIsland = function (grid) {
 }
 
 
-// T1905 MID https://leetcode-cn.com/problems/count-sub-islands/   思路和封闭岛屿差不多 先排除不是 再dfs
+// T1905 MID https://leetcode.cn/problems/count-sub-islands/   思路和封闭岛屿差不多 先排除不是 再dfs
 var countSubIslands = function (grid1, grid2) {
     let m = grid1.length,
         n = grid1[0].length;

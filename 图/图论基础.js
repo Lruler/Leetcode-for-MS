@@ -15,7 +15,7 @@ const traverse = (graph, s) => {
 }
 
 /* 
-T797 MID https://leetcode-cn.com/problems/all-paths-from-source-to-target/
+T797 MID https://leetcode.cn/problems/all-paths-from-source-to-target/
 图的所有可能路径
 */
 

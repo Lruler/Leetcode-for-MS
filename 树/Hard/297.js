@@ -1,4 +1,4 @@
-// https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
+// https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/
 // https://labuladong.gitee.io/algo/2/19/31/
 // 二叉树的序列化和反序列化 前序遍历嘛
 

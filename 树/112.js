@@ -1,4 +1,4 @@
-// https://leetcode-cn.com/problems/path-sum/
+// https://leetcode.cn/problems/path-sum/
 
 // dfs 递归
 var hasPathSum = function (root, targetSum) {

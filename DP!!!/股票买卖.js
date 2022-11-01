@@ -1,4 +1,4 @@
-// T188 HARD https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/
+// T188 HARD https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
 
 // 一定靠想仔细“状态” 才能去做状态转移
 
@@ -48,7 +48,7 @@ function maxProfit2(prices) {
 };
 
 
-// T121 easy https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+// T121 easy https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
 // 就是 k = 1 的场景
 
 var maxProfit = function (prices) {
@@ -66,17 +66,17 @@ var maxProfit = function (prices) {
     return dp[n - 1][0]
 };
 
-// T122 mid https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
+// T122 mid https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
 // k为正无穷的情况 就是上面的 maxProfit2 函数
 
 /* 
-T123 HARD https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/
+T123 HARD https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
 k = 2的场景
 */
 
-// T309 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ 考虑一天冷冻期
+// T309 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/ 考虑一天冷冻期
 
-// T714 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ 考虑减去手续费
+// T714 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ 考虑减去手续费
 
 
 

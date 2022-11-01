@@ -1,6 +1,6 @@
 /* 
 经典回溯之 集合划分
-T698 https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/
+T698 https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/
 */
 
 var canPartitionKSubsets = function (nums, k) {

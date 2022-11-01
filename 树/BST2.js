@@ -11,7 +11,7 @@ const BST = (root, target) => {
 */
 
 /* 
-T98 https://leetcode-cn.com/problems/validate-binary-search-tree/
+T98 https://leetcode.cn/problems/validate-binary-search-tree/
 验证BST
 */
 
@@ -26,7 +26,7 @@ var isValidBST = function (root) {
 };
 
 /* 
- T700 https://leetcode-cn.com/problems/search-in-a-binary-search-tree/
+ T700 https://leetcode.cn/problems/search-in-a-binary-search-tree/
  搜索BST中节点并作为根节点返回
 */
 
@@ -41,7 +41,7 @@ var searchBST = function (root, val) {
 
 
 /* 
-T701 https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/
+T701 https://leetcode.cn/problems/insert-into-a-binary-search-tree/
 BST 中插入一个节点
 */
 var insertIntoBST = function (root, val) {
@@ -55,7 +55,7 @@ var insertIntoBST = function (root, val) {
 
 
 /* 
-T450 https://leetcode-cn.com/problems/delete-node-in-a-bst/
+T450 https://leetcode.cn/problems/delete-node-in-a-bst/
 BST 中 删除一个节点(注意有三种情况)
 */
 

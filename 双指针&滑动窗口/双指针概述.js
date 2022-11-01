@@ -46,7 +46,7 @@ const slidingWindow (s, t) {
 */
 
 /* 
-T76: https://leetcode-cn.com/problems/minimum-window-substring/
+T76: https://leetcode.cn/problems/minimum-window-substring/
 给你一个字符串 s、 一个字符串 t。 返回 s 中涵盖 t 所有字符的最小子串。 如果 s 中不存在涵盖 t 所有字符的子串， 则返回空字符串 ""
 输入： s = "ADOBECODEBANC", t = "ABC"
 输出： "BANC"
@@ -92,7 +92,7 @@ var minWindow = function (s, t) {
 };
 
 /* 
-T567 https://leetcode-cn.com/problems/permutation-in-string/
+T567 https://leetcode.cn/problems/permutation-in-string/
 s1 的排列之一是 s2 的 子串
 输入： s1 = "ab"
 s2 = "eidbaooo"
@@ -129,7 +129,7 @@ var checkInclusion = function (s1, s2) {
 };
 
 /* 
-T438 https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/
+T438 https://leetcode.cn/problems/find-all-anagrams-in-a-string/
 给定两个字符串 s 和 p， 找到 s 中所有 p 的 异位词 的子串， 返回这些子串的起始索引。 不考虑答案输出的顺序。
 
 异位词 指由相同字母重排列形成的字符串（ 包括相同的字符串）。
@@ -174,7 +174,7 @@ var findAnagrams = function (s2, s1) {
 
 
 /*
-T3 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+T3 https://leetcode.cn/problems/longest-substring-without-repeating-characters/
 输入: s = "abcabcbb"
 输出: 3
 解释: 因为无重复字符的最长子串是 "abc"，
@@ -202,7 +202,7 @@ var lengthOfLongestSubstring = function (s) {
 
 
 /* 
-T5 Mid https://leetcode-cn.com/problems/longest-palindromic-substring/
+T5 Mid https://leetcode.cn/problems/longest-palindromic-substring/
 最长回文子串
 */
 
@@ -228,7 +228,7 @@ var longestPalindrome = function (s) {
 
 
 /* 
-T718 MID https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/submissions/
+T718 MID https://leetcode.cn/problems/maximum-length-of-repeated-subarray/submissions/
 最长公共子数组
 */
 var findLength = function (nums1, nums2) {
@@ -281,7 +281,7 @@ var findLength = function (nums1, nums2) {
 */
 
 /* 
-T26 easy https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+T26 easy https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
 删除有序数组重复项
 */
 var removeDuplicates = function (nums) {
@@ -299,7 +299,7 @@ var removeDuplicates = function (nums) {
 
 
 /* 
-T27 easy https://leetcode-cn.com/problems/remove-element/
+T27 easy https://leetcode.cn/problems/remove-element/
 数组原地移除给定的val
 */
 
@@ -316,7 +316,7 @@ var removeElement = function (nums, val) {
 };
 
 /* 
-T283 easy https://leetcode-cn.com/problems/move-zeroes/
+T283 easy https://leetcode.cn/problems/move-zeroes/
 移动0
 */
 
@@ -334,7 +334,7 @@ var moveZeroes = function (nums) {
 };
 
 /* 
-T344 easy https://leetcode-cn.com/problems/reverse-string/submissions/
+T344 easy https://leetcode.cn/problems/reverse-string/submissions/
 反转字符串数组
 */
 
@@ -358,7 +358,7 @@ var reverseString = function (s) {
 
 
 /* 
-T239 MID https://leetcode-cn.com/problems/minimum-size-subarray-sum/
+T239 MID https://leetcode.cn/problems/minimum-size-subarray-sum/
 输入： target = 7, nums = [2, 3, 1, 2, 4, 3]
 输出： 2
 解释： 子数组[4, 3] 是该条件下的长度最小的子数组。
@@ -379,7 +379,7 @@ var minSubArrayLen = function (target, nums) {
 };
 
 
-// T2024 T1004 https://leetcode-cn.com/problems/maximize-the-confusion-of-an-exam/ 一个思路
+// T2024 T1004 https://leetcode.cn/problems/maximize-the-confusion-of-an-exam/ 一个思路
 /* 
 给定一个二进制数组 nums 和一个整数 k， 如果可以翻转最多 k 个 0， 则返回 数组中连续 1 的最大个数。
 思路转化为
@@ -401,4 +401,33 @@ var longestOnes = function (nums, k) {
         ans = Math.max(ans, right - left + 1);
     }
     return ans;
+};
+
+
+// T481 https://leetcode.cn/problems/magical-string/description/
+var magicalString = function(n) {
+    if (n < 4) {
+        return 1;
+    }
+    const s = new Array(n).fill(0);
+    s[0] = '1';
+    s[1] = '2';
+    s[2] = '2';
+    let res = 1;
+    let i = 2;
+    let j = 3;
+    while (j < n) {
+        let size = s[i].charCodeAt() - '0'.charCodeAt();
+        const num = 3 - (s[j - 1].charCodeAt() - '0'.charCodeAt());
+        while (size > 0 && j < n) {
+            s[j] = String.fromCharCode('0'.charCodeAt() + num);
+            if (num === 1) {
+                ++res;
+            }
+            ++j;
+            --size;
+        }
+        ++i;
+    }
+    return res;
 };

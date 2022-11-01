@@ -29,10 +29,10 @@ for (int i = 0; i < n; i++) {
 
 
 /* 
-T300 MID https://leetcode-cn.com/problems/longest-increasing-subsequence/
+T300 MID https://leetcode.cn/problems/longest-increasing-subsequence/
 最长递增子序列
 */
-
+// DP方法
 var lengthOfLIS = function (nums) {
     let dp = new Array(nums.length).fill(1);
     for (let i = 0; i < nums.length; ++i) {
@@ -50,9 +50,33 @@ var lengthOfLIS = function (nums) {
     return res
 };
 
+// 纸牌/二分查找法
+
+var lengthOfLIS = function (nums) {
+    const dp = [nums[0]];
+    const len = nums.length;
+    for (let i = 0; i < len; i++) {
+      if (nums[i] > dp[dp.length - 1]) {
+        dp.push(nums[i]);
+      } else {
+        let left = 0;
+        let right = dp.length - 1;
+        while (left < right) {
+          let middle = (left + right) >> 1;
+          if (nums[i] > dp[middle]) {
+            left = middle + 1;
+          } else {
+            right = middle;
+          }
+        }
+        dp[left] = nums[i];
+      }
+    }
+    return dp.length;
+  };
 
 /* 
-T354 https://leetcode-cn.com/problems/russian-doll-envelopes/
+T354 https://leetcode.cn/problems/russian-doll-envelopes/
 把上面的题扩展到二维 即锁死一个纬度 用一维的方法去考虑另一个维度 再用二分优化
 */
 var maxEnvelopes = function (envelopes) {
@@ -83,7 +107,7 @@ var maxEnvelopes = function (envelopes) {
 };
 
 /* 
-T516 MID https://leetcode-cn.com/problems/longest-palindromic-subsequence/
+T516 MID https://leetcode.cn/problems/longest-palindromic-subsequence/
 最长回文子序列
 */
 // 在子串s[i..j]中，最长回文子序列的长度为dp[i][j]。
@@ -103,7 +127,7 @@ var longestPalindromeSubseq = function (s) {
 };
 
 /* 
-T53 Easy https://leetcode-cn.com/problems/maximum-subarray/
+T53 Easy https://leetcode.cn/problems/maximum-subarray/
 最长子数组 就是把序列改成数组 思路一致
 */
 var maxSubArray = function (nums) {
@@ -119,7 +143,7 @@ var maxSubArray = function (nums) {
 };
 
 /* 
-T1143 https://leetcode-cn.com/problems/longest-common-subsequence/
+T1143 https://leetcode.cn/problems/longest-common-subsequence/
 MID 最长公共子序列
 */
 // dp[i][j] 表示 text1[0..i]和text[0..j]的最长公共子序列
@@ -139,7 +163,7 @@ var longestCommonSubsequence = function (text1, text2) {
     return dp[m][n]
 };
 
-//T583 https://leetcode-cn.com/problems/delete-operation-for-two-strings/ 一致的思路 就是求最长公共子序列 然后用原字符的长度去减
+//T583 https://leetcode.cn/problems/delete-operation-for-two-strings/ 一致的思路 就是求最长公共子序列 然后用原字符的长度去减
 
 // T712 https://mp.weixin.qq.com/s/ZhPEchewfc03xWv9VP3msg 同上 在求序列的时候顺带记录下ASCII码就行
 var minimumDeleteSum = function (text1, text2) {
@@ -169,3 +193,84 @@ var minimumDeleteSum = function (text1, text2) {
     }
     return dp(0, 0)
 };
+
+// T392 https://leetcode.cn/problems/is-subsequence/
+
+// 双指针思路
+var isSubsequence = function(s, t) {
+    let i = 0, j = 0;
+    while (i < s.length && j < t.length) {
+        if (s[i] === t[j]) i++
+        j++
+    }
+    return i === s.length
+};
+
+// 二分 (不知道为什么有一个用例跑不通)
+const left_search = (arr, t) => {
+    let left = 0, right = arr.length;
+    while (left < right) {
+        let mid = left + (right - left) / 2;
+        if (t > arr[mid]) left = mid + 1;
+        else right = mid
+    }
+    if (left === arr.length) return -1
+    return left
+}
+var isSubsequence = function(s, t) {
+    let m = s.length, n = t.length
+    const index = new Map()
+    for (let i = 0; i < n; ++i) {
+        const c = t[i];
+        if (!index.get(c)) index.set(c, []);
+        index.get(c).push(i)
+    }
+    let j = 0;
+    for (let i = 0; i < m; ++i) {
+        const c = s[i];
+        if (!index.get(c)) return false;
+        let pos = left_search(index.get(c), j)
+        if (pos == -1) return false;
+        j = index.get(c)[pos] + 1;
+        console.log(pos)
+    }
+    return true
+};
+
+
+// T792 https://leetcode.cn/problems/number-of-matching-subsequences
+var numMatchingSubseq = function(s, words) {
+    const posMap = new Map()
+    let cnt = 0
+    for(let i=0;i<s.length;i++) {
+      if(!posMap.has(s[i])) posMap.set(s[i], [])
+      posMap.get(s[i]).push(i)
+    }
+    for(const word of words) {
+      let shouwldAdd = false
+      let idx = -1
+      for(let i=0;i<word.length;i++) {
+        if(!posMap.has(word[i])) break
+        const idxes = posMap.get(word[i])
+        if(idxes[idxes.length - 1] <= idx) break
+        idx = binarSearch(idxes, idx)
+        if(i === word.length - 1) shouwldAdd = true
+      }
+      if(shouwldAdd) {
+        cnt++
+      }
+    }
+    return cnt
+  };
+  function binarSearch(nums, target) {
+    let l = 0, r = nums.length - 1
+    while(l < r) {
+      const mid = Math.floor((l + r) / 2)
+      if(nums[mid] > target) {
+        r = mid
+      } else {
+        l = mid + 1
+      }
+    }
+    return nums[l]
+  }

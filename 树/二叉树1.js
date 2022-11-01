@@ -7,7 +7,7 @@
 
 
 /* 
-T226 https://leetcode-cn.com/problems/invert-binary-tree/
+T226 https://leetcode.cn/problems/invert-binary-tree/
 翻转二叉树
 */
 
@@ -25,7 +25,7 @@ var invertTree = function (root) {
 
 
 /* 
-T116 https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/
+T116 https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
 填充二叉树节点右侧指针
 */
 var connect = function (root) {
@@ -45,7 +45,7 @@ var connect = function (root) {
 
 
 /* 
-T114 https: //leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
+T114 https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
 将二叉树展开成链表
 就两步
 1. root的左子树和右子树拉平   2. root右子树接到左子树下方 然后将这个左子树作为右子树

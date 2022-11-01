@@ -1,5 +1,5 @@
 /* 
-https://leetcode-cn.com/problems/koko-eating-bananas/
+https://leetcode.cn/problems/koko-eating-bananas/
 */
 var minEatingSpeed = function (piles, H) {
     // 找到最大值，确认速度区间

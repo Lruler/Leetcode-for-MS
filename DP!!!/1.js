@@ -15,7 +15,7 @@ for 状态1 in 状态1的所有取值：
 */
 
 /* 
-T322 MID https://leetcode-cn.com/problems/coin-change/
+T322 MID https://leetcode.cn/problems/coin-change/
 找零钱问题
 */
 
@@ -38,7 +38,7 @@ var coinChange = function (coins, amount) {
 
 
 /* 
-T887 HARD https://leetcode-cn.com/problems/super-egg-drop/
+T887 HARD https://leetcode.cn/problems/super-egg-drop/
 高楼接鸡蛋
 dp[k][n] = m
 # 当前状态为 k 个鸡蛋， 面对 n 层楼
@@ -73,7 +73,7 @@ var superEggDrop = function (K, N) {
 
 
 /* 
-T72 HARD https://leetcode-cn.com/problems/edit-distance/ 编辑距离
+T72 HARD https://leetcode.cn/problems/edit-distance/ 编辑距离
 */
 
 const min = (a, b, c) => {
@@ -103,7 +103,7 @@ var minDistance = function (word1, word2) {
 
 
 /* 
-T312 戳气球 HARD https://leetcode-cn.com/problems/burst-balloons/
+T312 戳气球 HARD https://leetcode.cn/problems/burst-balloons/
 dp[i][j] = x表示， 戳破气球i和气球j之间（ 开区间， 不包括i和j） 的所有气球， 可以获得的最高分数为x。
 */
 var maxCoins = function (nums) {
@@ -127,7 +127,7 @@ var maxCoins = function (nums) {
 
 
 /* 
-T64 MID https://leetcode-cn.com/problems/minimum-path-sum/
+T64 MID https://leetcode.cn/problems/minimum-path-sum/
 最小路径和 一遍过 简单
 */
 var minPathSum = function (grid) {
@@ -149,7 +149,7 @@ var minPathSum = function (grid) {
 };
 
 /* 
-T787 https://leetcode-cn.com/problems/cheapest-flights-within-k-stops/
+T787 https://leetcode.cn/problems/cheapest-flights-within-k-stops/
 加权有向图的最短路径  dp 和 Dijkstra算法都可以
 */
 var findCheapestPrice = function (n, flights, src, dst, k) {

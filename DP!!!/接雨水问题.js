@@ -1,4 +1,4 @@
-// T42 接雨水 https://leetcode-cn.com/problems/trapping-rain-water/
+// T42 接雨水 https://leetcode.cn/problems/trapping-rain-water/
 
 var trap = function (height) {
     let ans = 0;
@@ -22,7 +22,7 @@ var trap = function (height) {
 
 
 /* 
-T11 https://leetcode-cn.com/problems/container-with-most-water/
+T11 https://leetcode.cn/problems/container-with-most-water/
 盛最多水的容器
 */
  var maxArea = function (height) {

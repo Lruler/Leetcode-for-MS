@@ -1,7 +1,7 @@
 /* 
 使…… 最大值尽可能小」 是二分搜索题目常见的问法
 将数组分割为 mm 段， 求……」 是动态规划题目常见的问法。
-https://leetcode-cn.com/problems/split-array-largest-sum/
+https://leetcode.cn/problems/split-array-largest-sum/
 T410 HARD 分割数组最大值
 
 其实  如果算法中存在有序的线性查找 比如

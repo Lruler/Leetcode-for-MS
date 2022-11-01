@@ -66,7 +66,7 @@ countComponents(5, [
 
 /* 
 
-T130 MID https://leetcode-cn.com/problems/surrounded-regions/
+T130 MID https://leetcode.cn/problems/surrounded-regions/
 两种思路
 1. DFS 把所有和边界相邻的o先用#代替，然后遍历把剩下的o变成X，再把#恢复成o
 2. 所有的边界o设置一个共同祖先dummy 则所有边界o包括与他们相邻的o就是一个连通图 把不与他们连通的全都变成x即可
@@ -118,7 +118,7 @@ const solve = (board) => {
 }
 
 /* 
-T990 MID https://leetcode-cn.com/problems/satisfiability-of-equality-equations/
+T990 MID https://leetcode.cn/problems/satisfiability-of-equality-equations/
 */
 
 var equationsPossible = function (equations) {

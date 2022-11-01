@@ -9,7 +9,7 @@
 
 // 452和435 区间调度问题 排序再贪心解
 /* 
-T435 MID https://leetcode-cn.com/problems/non-overlapping-intervals/
+T435 MID https://leetcode.cn/problems/non-overlapping-intervals/
 无重叠子区间
 */
 var eraseOverlapIntervals = function (intervals) {
@@ -33,7 +33,7 @@ var eraseOverlapIntervals = function (intervals) {
 
 
 /* 
-T452 MId https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/
+T452 MId https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/
 用最少的箭戳爆气球
 */
 var findMinArrowShots = function (points) {
@@ -52,7 +52,7 @@ var findMinArrowShots = function (points) {
 // 跳跃游戏
 
 /* 
-T55 mid https://leetcode-cn.com/problems/jump-game/
+T55 mid https://leetcode.cn/problems/jump-game/
 跳跃游戏 思路转换 
 请问通过题目中的跳跃规则， 最多能跳多远？ 如果能够越过最后一格， 返回 true， 否则返回 false。
 */
@@ -73,7 +73,7 @@ var canJump = function (nums) {
 };
 
 /* 
-T45 mid https://leetcode-cn.com/problems/jump-game-ii/
+T45 mid https://leetcode.cn/problems/jump-game-ii/
 跳跃游戏II 每一步都跳最大的再穷举
 */
 

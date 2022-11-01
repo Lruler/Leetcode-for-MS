@@ -8,7 +8,7 @@ diff差分数组 diff[i] = nums[i] - num[i - 1]
 */
 
 /* 
-T1109 https://leetcode-cn.com/problems/corporate-flight-bookings/
+T1109 https://leetcode.cn/problems/corporate-flight-bookings/
 */
 // 同样的思想 不过构造下面那个class说我超出时间限制 不懂
 var corpFlightBookings = function (bookings, n) {
@@ -51,7 +51,7 @@ class DiffArray {
 }
 
 /* 
-T1094 mid https://leetcode-cn.com/problems/car-pooling/
+T1094 mid https://leetcode.cn/problems/car-pooling/
 */
 
 var carPooling = function (trips, capacity) {

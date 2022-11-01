@@ -1,5 +1,5 @@
 /* 
-https://leetcode-cn.com/problems/maximum-frequency-stack/
+https://leetcode.cn/problems/maximum-frequency-stack/
 T 795 HARD 最大频率栈
 */
 class FreqStack {
@@ -35,7 +35,7 @@ class FreqStack {
     }
 }
 /* 
-https://leetcode-cn.com/problems/find-median-from-data-stream/
+https://leetcode.cn/problems/find-median-from-data-stream/
 T 295 HARD 数据流中位数 用两个堆来实现 大顶堆和小顶堆
 */
 var MedianFinder = function () {
@@ -192,7 +192,9 @@ for (let i = nums.length - 1; i >= 0; --i) {
 }
 return res
 
-T739 MID https://leetcode-cn.com/problems/daily-temperatures/
+// T907 https://leetcode.cn/problems/sum-of-subarray-minimums/description/
+
+T739 MID https://leetcode.cn/problems/daily-temperatures/
 每日温度
 */
 
@@ -211,7 +213,7 @@ var dailyTemperatures = function (temperatures) {
 };
 
 /* 
-T496 https://leetcode-cn.com/problems/next-greater-element-i/
+T496 https://leetcode.cn/problems/next-greater-element-i/
 下一个更大数
 */
 
@@ -232,7 +234,7 @@ var nextGreaterElement = function (nums1, nums2) {
 
 
 /* 
-T503 https://leetcode-cn.com/problems/next-greater-element-ii/
+T503 https://leetcode.cn/problems/next-greater-element-ii/
 下一个更大数 环形(就是把数组翻倍)
 */
 
@@ -251,7 +253,7 @@ var nextGreaterElements = function (nums) {
 
 /* 
 单调队列 就是一个双端队列 和单点栈差不多 要维持队列的有序性
-T239 HARD https://leetcode-cn.com/problems/sliding-window-maximum/
+T239 HARD https://leetcode.cn/problems/sliding-window-maximum/
 */
 
 var maxSlidingWindow = function (nums, k) {
@@ -270,4 +272,74 @@ var maxSlidingWindow = function (nums, k) {
         }
     }
     return res
+};
+
+// 括号问题
+
+// T20 https://leetcode.cn/problems/valid-parentheses/description/?q=js&orderBy=most_relevant 栈
+var isValid = function(s) {
+    const map = new Map();
+
+    map.set("(", ")");
+    map.set("[", "]");
+    map.set("{", "}");
+
+    const stack = [];
+
+    for(let i = 0; i < s.length; i++){
+        if(map.has(s[i])){
+            stack.push(map.get(s[i]));
+        }else{
+            if(s[i] !== stack.pop()){
+                return false
+            }
+        }
+    }
+
+    if(stack.length) return false
+
+    return true
+};
+// T921 https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/description/
+var minAddToMakeValid = function(s) {
+    let res = 0;
+    let need = 0;
+
+    for (let c of s) {
+        if (c === '(') {
+            need++
+        }
+        else {
+            need--;
+            if (need == -1) {
+                need = 0;
+                res++
+            }
+        }
+    }
+    return res + need
+};
+
+// T1541 https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/description/
+var minInsertions = function(s) {
+    let res = 0;
+    let need = 0;
+    for (let ch of s) {
+        if (ch == '(') {
+            need += 2;
+            if (need % 2 == 1) {
+                res++;
+                need--;
+            }
+        }
+        
+        if (ch == ')') {
+            need--;
+            if (need == -1) {
+                res++;
+                need = 1;
+            }
+        }
+    }
+    return res + need
 };

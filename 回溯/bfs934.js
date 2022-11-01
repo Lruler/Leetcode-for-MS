@@ -1,4 +1,4 @@
-// 934 最短的桥 https://leetcode-cn.com/problems/shortest-bridge/submissions/
+// 934 最短的桥 https://leetcode.cn/problems/shortest-bridge/submissions/
 
 var shortestBridge = function (A) {
     const rows = A.length;

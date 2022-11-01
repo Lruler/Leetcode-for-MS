@@ -79,7 +79,7 @@ const minimumCost = (n, connections) => {
 }
 
 /* 
-T1584 MID https://leetcode-cn.com/problems/min-cost-to-connect-all-points/
+T1584 MID https://leetcode.cn/problems/min-cost-to-connect-all-points/
 连接所有点的最小费用
 */
 

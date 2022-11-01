@@ -18,7 +18,7 @@ const backtrack = (path(路径), choice(选择列表)) => {
 }   
 */
 
-// https://leetcode-cn.com/problems/permutations/
+// https://leetcode.cn/problems/permutations/
 //T46 排列
 var permute = function (nums) {
     const res = []
@@ -36,7 +36,31 @@ var permute = function (nums) {
     return res
 };
 
-// https://leetcode-cn.com/problems/combinations/
+// T784 https://leetcode.cn/problems/letter-case-permutation/description/ 字母全排列
+var letterCasePermutation = function(s) {
+    const ans = [];
+    const dfs = (arr, pos, res) => {
+        while (pos < arr.length && isDigit(arr[pos])) {
+            pos++;
+        }
+        if (pos === arr.length) {
+            res.push(arr.join(""));
+            return;
+        }
+        arr[pos] = String.fromCharCode(arr[pos].charCodeAt() ^ 32);
+        dfs(arr, pos + 1, res);
+        arr[pos] = String.fromCharCode(arr[pos].charCodeAt() ^ 32);
+        dfs(arr, pos + 1, res);
+        }
+    dfs([...s], 0, ans);
+    return ans;
+};
+
+const isDigit = (ch) => {
+    return parseFloat(ch).toString() === "NaN" ? false : true;
+}
+
+// https://leetcode.cn/problems/combinations/
 // 组合
 const combine = (n, k) => {
     let comb = new Array(k)
@@ -57,7 +81,7 @@ const combine = (n, k) => {
     return ans
 }
 
-// https://leetcode-cn.com/problems/word-search/
+// https://leetcode.cn/problems/word-search/
 // T79 单词搜索 一个二维回溯 比较复杂 要考虑边界问题
 var exist = function (board, word) {
     const h = board.length,
@@ -174,7 +198,7 @@ var solveNQueens = function (n) {
 
 
 /* 
-T47 mid https://leetcode-cn.com/problems/permutations-ii/submissions/
+T47 mid https://leetcode.cn/problems/permutations-ii/submissions/
 全排列II 存在相同数字进行全排
 */
 var permuteUnique = function (nums) {
@@ -211,10 +235,10 @@ var permuteUnique = function (nums) {
 
 /* 
 组合总和四部曲
-I. https://leetcode-cn.com/problems/combination-sum/submissions/
-II. https://leetcode-cn.com/problems/combination-sum-ii/solution/jshui-su-by-prefixa-l5xm/
-III. https://leetcode-cn.com/problems/combination-sum-iii/
-IV. https://leetcode-cn.com/problems/combination-sum-iv/
+I. https://leetcode.cn/problems/combination-sum/submissions/
+II. https://leetcode.cn/problems/combination-sum-ii/solution/jshui-su-by-prefixa-l5xm/
+III. https://leetcode.cn/problems/combination-sum-iii/
+IV. https://leetcode.cn/problems/combination-sum-iv/
 */
 
 // I 找出总和 可以无限取元素 不能有重复组合
@@ -305,7 +329,7 @@ var combinationSum4 = function (nums, target) {
 
 
 /* 
-T78 https://leetcode-cn.com/problems/subsets/
+T78 https://leetcode.cn/problems/subsets/
 求子集
 */
 var subsets = function (nums) {
@@ -326,7 +350,7 @@ var subsets = function (nums) {
 };
 
 /* 
-T90 https://leetcode-cn.com/problems/subsets-ii/
+T90 https://leetcode.cn/problems/subsets-ii/
 子集II 有重复元素
 */
 var subsetsWithDup = function (nums) {
@@ -350,7 +374,7 @@ var subsetsWithDup = function (nums) {
 
 
 /* 
-T93  MID https://leetcode-cn.com/problems/restore-ip-addresses/
+T93  MID https://leetcode.cn/problems/restore-ip-addresses/
 寻找合法I
 */
 
@@ -397,7 +421,7 @@ var restoreIpAddresses = function (s) {
 };
 
 /* 
-T113 https://leetcode-cn.com/problems/path-sum-ii/
+T113 https://leetcode.cn/problems/path-sum-ii/
 MID 树的回溯
 */
 

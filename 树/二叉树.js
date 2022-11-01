@@ -23,7 +23,7 @@ traverse = (TreeNode root) {
 */
 
 /* 
-T104 easy https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
+T104 easy https://leetcode.cn/problems/maximum-depth-of-binary-tree/
 求二叉树深度
 */
 // 第一种递归接法
@@ -55,7 +55,7 @@ var maxDepth2 = (root) => {
 这里还要注意后序的特殊之处
 因为后序实在出节点后 也就是说 他可以拿到 子节点递归完成后的数据！
 也就是说 如果题目和子树有关 那么很大可能性是需要后序操作
-T543  https://leetcode-cn.com/problems/diameter-of-binary-tree/
+T543  https://leetcode.cn/problems/diameter-of-binary-tree/
 求二叉树直径
 */
 
@@ -73,7 +73,7 @@ var diameterOfBinaryTree = function (root) {
     }
 };
 /* 
-T124 https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/
+T124 https://leetcode.cn/problems/binary-tree-maximum-path-sum/
 求二叉树最大路径和
 */
 var maxPathSum = function (root) {
@@ -104,7 +104,7 @@ BFS 就是从层序遍历推广来的
 */
 
 /* 
-T515 https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/
+T515 https://leetcode.cn/problems/find-largest-value-in-each-tree-row/
 找出树的每一层最大值
  */
 var largestValues = function (root, res = []) {
@@ -143,34 +143,32 @@ const preorderTraversal = function (root) {
 };
 
 // 中序遍历
- const inorderTraversal = function (root) {
-     const res = [],
-         stack = []
-     let node = root;
-     while (stack.length > 0 || node !== null) {
-         // 这里用当前节点node是否存在，简化代码，
-         if (node) {
-             stack.push(node);
-             node = node.left
-         } else {
-             node = stack.pop();
-             res.push(node.val);
-             node = node.right;
-         }
-     }
-     return res;
- };
+var inorderTraversal = function(root) {
+    const res = [];
+    const stk = [];
+    while (root || stk.length) {
+        while (root) {
+            stk.push(root);
+            root = root.left;
+        }
+        root = stk.pop();
+        res.push(root.val);
+        root = root.right;
+    }
+    return res;
+};
 
  // 后序遍历
  // 后序其实就是前序的逆向思路 
  const postorderTraversal = function (root) {
-     const res = [],
-         stack = []
-     while (root || stack.length) {
-         res.unshift(root.val)
-         root.left && stack.push(root.left)
-         root.right && stack.push(root.right)
-         root = stack.pop()
-     }
-     return res
+    const stack = [], res = []
+    root && stack.push(root)
+    while (stack.length > 0) {
+        let cur = stack.pop()
+        res.push(cur.val)
+        // 先入栈的元素后输出，所以先入栈当前节点右孩子，再入栈左孩子
+        cur.right && stack.push(cur.right)
+        cur.left && stack.push(cur.left)
+    }
+    return res
  };
