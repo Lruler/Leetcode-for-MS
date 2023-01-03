@@ -69,7 +69,7 @@ var canPartition = function (nums) {
 
 /* 
 完全背包问题
-T518 mid https://leetcode.cn/problems/coin-change-2/
+T518 mid https://leetcode.cn/problems/coin-change-ii/
 */
 var change = function (amount, coins) {
     const n = coins.length;

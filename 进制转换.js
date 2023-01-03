@@ -27,24 +27,6 @@ var convertToTitle = function (columnNumber) {
 };
 
 
-var intersection = function (nums1, nums2) {
-    const set1 = new Set(nums1);
-    const set2 = new Set(nums2);
-    const res = []
-    set1.forEach(s => {
-        console.log(s)
-        if (set2.has(s)) {
-            console.log(s)
-            res.push(s)
-        }
-    })
-    console.log(res)
-    return res
-};
-
-
-let a = [1, 2, 3, 4, 5];
-
 
  
 // 二进制求和 T67 https://leetcode.cn/problems/add-binary/description/
