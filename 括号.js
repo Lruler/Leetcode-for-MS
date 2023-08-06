@@ -1,4 +1,5 @@
 // t20 https://leetcode.cn/problems/valid-parentheses/ 有效的括号
+// 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
 const dict = {
   "(": ')',
   "[": "]",
@@ -21,8 +22,11 @@ var isValid = function (s) {
   }
   return !stack.length  // 栈清空则表示全部合并完成
 };
-
-// T394 https://leetcode.cn/problems/decode-string/description/
+// T394 https://leetcode.cn/problems/decode-string/description/  字符串解码
+/**
+输入：s = "3[a]2[bc]"
+输出："aaabcbc"
+ */
 var decodeString = function(s) {
   // 用两个栈来存放当前状态，前者是重复次数，后者是累积字符串
   let repetStack=[],resStack=[];
@@ -60,9 +64,8 @@ var decodeString = function(s) {
   }
   return resStr;
 };
-
-
-// T22 https://leetcode.cn/problems/generate-parentheses/
+// T22 https://leetcode.cn/problems/generate-parentheses/  括号生成
+// 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合
 var generateParenthesis = function(n) {
   if (n == 0) return [];
   let res = [];
@@ -88,4 +91,51 @@ var generateParenthesis = function(n) {
   }
   return res
 };
-
+/* 
+描述：输入一串字符串，根据字符串求出每个字母的数量并返回结果对象。（数字为1时可省略）
+示例一：输入：A3B2，输出：{"A": 3, "B": 2}
+示例二：输入：A(A(A2B)2)3C2，输出：{"A": 16, "B": 6, "C": 2}
+*/
+function countChars(str) {
+    const stack = []; // 使用栈来存储每个字母的数量
+    let count = 1; // 初始化计数器为1，因为每个字母至少有一个
+    let result = {}; // 用于存储每个字母的数量和结果对象
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i];
+      if (/\d/.test(char)) { // 如果字符是数字
+        count = parseInt(char); // 转换计数器为该数字
+        // 如果栈顶元素是一个字母，则更新其数量为计数器的值
+        if (stack.length > 0 && typeof stack[stack.length - 1] === 'string') {
+          let lastChar = stack.pop();
+          let lastCount = stack.pop();
+          result[lastChar] = lastCount * count; // 将字母和数量存储在结果对象中
+        }
+      } else if (/[a-zA-Z]/.test(char)) { // 如果字符是一个字母
+        if (stack.length > 0 && typeof stack[stack.length - 1] === 'string') {
+          let lastChar = stack.pop();
+          stack.push(lastChar + char); // 将连续的字母合并到一起
+        } else {
+          stack.push(char);
+        }
+      } else if (char === '(') { // 如果字符是左括号
+        stack.push(count); // 将计数器入栈
+        count = 1; // 重置计数器为1
+      } else if (char === ')') { // 如果字符是右括号
+        // 如果栈顶元素是一个字母，则更新其数量为计数器的值
+        if (stack.length > 0 && typeof stack[stack.length - 1] === 'string') {
+          let lastChar = stack.pop();
+          let lastCount = stack.pop();
+          result[lastChar] = lastCount * count; // 将字母和数量存储在结果对象中
+        }
+        count = stack.pop(); // 更新计数器为左括号前的计数器值
+      }
+    }
+    // 处理栈中剩余的元素
+    while (stack.length > 0) {
+      let lastChar = stack.pop();
+      let lastCount = stack.pop();
+      result[lastChar] = lastCount; // 将字母和数量存储在结果对象中
+    }
+    return result; // 返回结果对象
+}
+  

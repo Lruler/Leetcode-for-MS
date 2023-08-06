@@ -31,3 +31,28 @@ var numTrees = function(n) {
 /* 
 T95 https://leetcode.cn/problems/unique-binary-search-trees-ii/
 */
+// 给你一个整数 n ，请你生成并返回所有由 n 个节点组成且节点值从 1 到 n 互不相同的不同 二叉搜索树 。可以按 任意顺序 返回答案。
+var generateTrees = function (n) {
+    if (!n) return null;
+    return help(1, n);
+};
+
+const help = (left, right) => {
+    if (left > right) { return null };
+    const ans = [];
+    for (let i = left; i <= right; i++) {
+        const leftTree = help(left, i - 1);
+        const rightTree = help(i + 1, right);
+        const l = leftTree || [null];
+        const r = rightTree || [null];
+        for (const left of l) {
+            for (const right of r) {
+                const curr = new TreeNode(i);
+                curr.left = left;
+                curr.right = right;
+                ans.push(curr);
+            }
+        }
+    }
+    return ans;
+}

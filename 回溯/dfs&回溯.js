@@ -375,7 +375,7 @@ var subsetsWithDup = function (nums) {
 
 /* 
 T93  MID https://leetcode.cn/problems/restore-ip-addresses/
-寻找合法I
+复原IP
 */
 
 var restoreIpAddresses = function (s) {
@@ -418,37 +418,4 @@ var restoreIpAddresses = function (s) {
 
     dfs(s, 0, 0);
     return ans;
-};
-
-/* 
-T113 https://leetcode.cn/problems/path-sum-ii/
-MID 树的回溯
-*/
-
-
-
-var pathSum = function (root, targetSum) {
-    const res = [];
-    if (!root) return res;
-    const traverse = (root, sum, path) => {
-        if (!root) return;
-        let remain = sum - root.val;
-
-        if (!root.left && !root.right) {
-            if (remain == 0) {
-                path.push(root.val);
-                res.push([...path]);
-                path.pop();
-            }
-            return;
-        }
-        path.push(root.val);
-        traverse(root.left, remain, path);
-        path.pop();
-        path.push(root.val);
-        traverse(root.right, remain, path);
-        path.pop();
-    }
-    traverse(root, targetSum, []);
-    return res;
 };

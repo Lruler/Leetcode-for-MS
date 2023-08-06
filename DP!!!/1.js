@@ -18,7 +18,6 @@ for 状态1 in 状态1的所有取值：
 T322 MID https://leetcode.cn/problems/coin-change/
 找零钱问题
 */
-
 var coinChange = function (coins, amount) {
     if (amount === 0) return 0;
     //初始化长度为amount+1，值为无穷大的数组
@@ -35,12 +34,60 @@ var coinChange = function (coins, amount) {
     if (dp[amount] === Infinity) return -1;
     else return dp[amount]
 };
-
-
+/* 
+T72 HARD https://leetcode.cn/problems/edit-distance/ 编辑距离
+*/
+const min = (a, b, c) => {
+    return Math.min(a, Math.min(b, c))
+}
+var minDistance = function (word1, word2) {
+    let m = word1.length,
+        n = word2.length;
+    let dp = new Array(m + 1);
+    for (let i = 0; i < m + 1; ++i) {
+        dp[i] = Array(n + 1).fill(0)
+    }
+    // base case
+    for (let i = 1; i <= m; ++i) dp[i][0] = i;
+    for (let j = 1; j <= n; j++) dp[0][j] = j;
+    // 自底向上求解
+    for (let i = 1; i <= m; ++i) {
+        for (let j = 1; j <= n; ++j) {
+            if (word1[i - 1] == word2[j - 1]) dp[i][j] = dp[i - 1][j - 1]
+            else {
+                dp[i][j] = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1)
+            }
+        }
+    }
+    return dp[m][n]
+};
+/* 
+T312 戳气球 HARD https://leetcode.cn/problems/burst-balloons/
+dp[i][j] = x表示， 戳破气球i和气球j之间（ 开区间， 不包括i和j） 的所有气球， 可以获得的最高分数为x。
+*/
+var maxCoins = function (nums) {
+    let n = nums.length;
+    let point = new Array(n + 2);
+    point[0] = point[n + 1] = 1;
+    for (let i = 1; i <= n; ++i) {
+        point[i] = nums[i - 1];
+    }
+    let dp = Array.from(Array(n + 2), () => Array(n + 2).fill(0));
+    console.log(point)
+    for (let i = n; i >= 0; i--) {
+        for (let j = i + 1; j < n + 2; ++j) {
+            for (let k = i + 1; k < j; ++k) {
+                dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + point[i] * point[j] * point[k])
+            }
+        }
+    }
+    return dp[0][n + 1]
+};
 /* 
 T887 HARD https://leetcode.cn/problems/super-egg-drop/
 高楼接鸡蛋
-dp[k][n] = m
+/** 
+ dp[k][n] = m
 # 当前状态为 k 个鸡蛋， 面对 n 层楼
 # 这个状态下最少的扔鸡蛋次数为 m
 反向思考
@@ -69,104 +116,4 @@ var superEggDrop = function (K, N) {
         }
     }
     return m
-};
-
-
-/* 
-T72 HARD https://leetcode.cn/problems/edit-distance/ 编辑距离
-*/
-
-const min = (a, b, c) => {
-    return Math.min(a, Math.min(b, c))
-}
-var minDistance = function (word1, word2) {
-    let m = word1.length,
-        n = word2.length;
-    let dp = new Array(m + 1);
-    for (let i = 0; i < m + 1; ++i) {
-        dp[i] = Array(n + 1).fill(0)
-    }
-    // base case
-    for (let i = 1; i <= m; ++i) dp[i][0] = i;
-    for (let j = 1; j <= n; j++) dp[0][j] = j;
-    // 自底向上求解
-    for (let i = 1; i <= m; ++i) {
-        for (let j = 1; j <= n; ++j) {
-            if (word1[i - 1] == word2[j - 1]) dp[i][j] = dp[i - 1][j - 1]
-            else {
-                dp[i][j] = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1)
-            }
-        }
-    }
-    return dp[m][n]
-};
-
-
-/* 
-T312 戳气球 HARD https://leetcode.cn/problems/burst-balloons/
-dp[i][j] = x表示， 戳破气球i和气球j之间（ 开区间， 不包括i和j） 的所有气球， 可以获得的最高分数为x。
-*/
-var maxCoins = function (nums) {
-    let n = nums.length;
-    let point = new Array(n + 2);
-    point[0] = point[n + 1] = 1;
-    for (let i = 1; i <= n; ++i) {
-        point[i] = nums[i - 1];
-    }
-    let dp = Array.from(Array(n + 2), () => Array(n + 2).fill(0));
-    console.log(point)
-    for (let i = n; i >= 0; i--) {
-        for (let j = i + 1; j < n + 2; ++j) {
-            for (let k = i + 1; k < j; ++k) {
-                dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + point[i] * point[j] * point[k])
-            }
-        }
-    }
-    return dp[0][n + 1]
-};
-
-
-/* 
-T64 MID https://leetcode.cn/problems/minimum-path-sum/
-最小路径和 一遍过 简单
-*/
-var minPathSum = function (grid) {
-    const m = grid.length,
-        n = grid[0].length
-    const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
-    for (let i = 1; i < m + 1; ++i) {
-        for (let j = 1; j < n + 1; ++j) {
-            if (i == 1) {
-                dp[i][j] = dp[i][j - 1] + grid[i - 1][j - 1]
-            } else if (j == 1) {
-                dp[i][j] = dp[i - 1][j] + grid[i - 1][j - 1]
-            } else {
-                dp[i][j] = Math.min(dp[i][j - 1] + grid[i - 1][j - 1], dp[i - 1][j] + grid[i - 1][j - 1])
-            }
-        }
-    }
-    return dp[m][n]
-};
-
-/* 
-T787 https://leetcode.cn/problems/cheapest-flights-within-k-stops/
-加权有向图的最短路径  dp 和 Dijkstra算法都可以
-*/
-var findCheapestPrice = function (n, flights, src, dst, k) {
-    const INF = 10000 * 101 + 1;
-    const f = new Array(k + 2).fill(0).map(() => new Array(n).fill(INF));
-    f[0][src] = 0;
-    for (let t = 1; t <= k + 1; ++t) {
-        for (const flight of flights) {
-            const j = flight[0],
-                i = flight[1],
-                cost = flight[2];
-            f[t][i] = Math.min(f[t][i], f[t - 1][j] + cost);
-        }
-    }
-    let ans = INF;
-    for (let t = 1; t <= k + 1; ++t) {
-        ans = Math.min(ans, f[t][dst]);
-    }
-    return ans == INF ? -1 : ans;
 };

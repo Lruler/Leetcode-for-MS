@@ -113,7 +113,7 @@ var searchRange = function (nums, target) {
 };
 
 // 旋转数组解法 https://juejin.cn/post/6844903824050618381
-// T33 https://leetcode.cn/problems/search-in-rotated-sorted-array/  元素不重复
+// T33 https://leetcode.cn/problems/search-in-rotated-sorted-array/  元素不重复寻找下标
 const search = function (nums, target) {
     if (!nums.length) return -1
     let left = 0,
@@ -142,7 +142,7 @@ const search = function (nums, target) {
 }
 /* 
 T81 mid https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/
-Input: nums = [2, 5, 6, 0, 0, 1, 2], target = 0
+Input: nums = [2, 5, 6, 0, 0, 1, 2], target = 0 // 元素重复寻找值
 Output: true
 */
 const search2 = function (nums, target) {
@@ -175,8 +175,8 @@ const search2 = function (nums, target) {
     }
     return false
 }
-
-// T153 https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/ 元素不重复
+// 不重复寻找最小值
+// T153 https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/ 
 const findMin = function (nums) {
     if (!nums.length) return null
     if (nums.length === 1) return nums[0]
@@ -206,6 +206,21 @@ const findMin = function (nums) {
 T154 Hard https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/
 就是n次旋转后的数组找出最小值 元素重复
 */ 
+var findMin2 = function(nums) {
+    let low = 0;
+    let high = nums.length - 1;
+    while (low < high) {
+        const pivot = low + Math.floor((high - low) / 2);
+        if (nums[pivot] < nums[high]) {
+            high = pivot;
+        } else if (nums[pivot] > nums[high]) {
+            low = pivot + 1;
+        } else {
+            high -= 1;
+        }
+    }
+    return nums[low];
+};
 
 /* 
 当mid是偶数 mid & 1 = 0

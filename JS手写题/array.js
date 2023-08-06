@@ -18,8 +18,6 @@ Array.prototype.MyReduce = function (fn, initialValue) {
     //最后的返回值
     return res
 }
-
-
 // filter
 Array.prototype._filter = function (fn) {
     if (typeof fn !== "function") {
@@ -31,7 +29,6 @@ Array.prototype._filter = function (fn) {
     }
     return res;
 }
-
 // map
 Array.prototype._map = function (fn) {
     if (typeof fn !== "function") {
@@ -43,9 +40,36 @@ Array.prototype._map = function (fn) {
     }
     return res;
 }
-
-
 // flat
+// concat + 递归
+function flat(arr) {
+    let arrResult = [];
+    arr.forEach(item => {
+      if (Array.isArray(item)) {
+        arrResult = arrResult.concat(arguments.callee(item));   // 递归
+        // 或者用扩展运算符
+        // arrResult.push(...arguments.callee(item));
+      } else {
+        arrResult.push(item);
+      }
+    });
+    return arrResult;
+  }
+// 栈思想
+function flat(arr) {
+    const result = []; 
+    const stack = [].concat(arr);  // 将数组元素拷贝至栈，直接赋值会改变原数组
+    //如果栈不为空，则循环遍历
+    while (stack.length !== 0) {
+      const val = stack.pop(); 
+      if (Array.isArray(val)) {
+        stack.push(...val); //如果是数组再次入栈，并且展开了一层
+      } else {
+        result.unshift(val); //如果不是数组就将其取出来放入结果数组中
+      }
+    }
+    return result;
+  }
 // 递归实现
 function _flat(arr, depth) {
     if (!Array.isArray(arr) || depth <= 0) {
@@ -59,7 +83,6 @@ function _flat(arr, depth) {
         }
     }, []);
 }
-
 // reduce实现
 function flatten(arr) {
     return arr.reduce(function (prev, next) {
@@ -72,12 +95,10 @@ function flatten(arr) {
         return prev.concat(Array.isArray(next) ? flatten(next) : next)
     }, [])
 }
-
 // toString
 function flatten(arr) {
     return arr.toString().split(',');
 }
-
 //求数组深度
 const arrayDepth = function (arr) {
     let count = 0;

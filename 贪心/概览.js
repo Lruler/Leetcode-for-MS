@@ -30,8 +30,6 @@ var eraseOverlapIntervals = function (intervals) {
     }
     return n - ans;
 };
-
-
 /* 
 T452 MId https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/
 用最少的箭戳爆气球
@@ -48,16 +46,12 @@ var findMinArrowShots = function (points) {
     }
     return a
 };
-
 // 跳跃游戏
-
 /* 
 T55 mid https://leetcode.cn/problems/jump-game/
 跳跃游戏 思路转换 
 请问通过题目中的跳跃规则， 最多能跳多远？ 如果能够越过最后一格， 返回 true， 否则返回 false。
 */
-
-
 var canJump = function (nums) {
     let n = nums.length;
     let farthest = 0;
@@ -71,12 +65,10 @@ var canJump = function (nums) {
     }
     return farthest >= n - 1
 };
-
 /* 
 T45 mid https://leetcode.cn/problems/jump-game-ii/
 跳跃游戏II 每一步都跳最大的再穷举
 */
-
 var jump = function (nums) {
     let n = nums.length;
     let end = 0,

@@ -1,3 +1,4 @@
+// 分发糖果
 var candy = function (ratings) {
     const len = ratings.length
     let candies = Array(len).fill(1);

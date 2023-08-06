@@ -32,3 +32,46 @@ var minFallingPathSum = function(matrix) {
     }
     return res
 };
+/* 
+T64 MID https://leetcode.cn/problems/minimum-path-sum/
+最小路径和 一遍过 简单
+*/
+var minPathSum = function (grid) {
+    const m = grid.length,
+        n = grid[0].length
+    const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
+    for (let i = 1; i < m + 1; ++i) {
+        for (let j = 1; j < n + 1; ++j) {
+            if (i == 1) {
+                dp[i][j] = dp[i][j - 1] + grid[i - 1][j - 1]
+            } else if (j == 1) {
+                dp[i][j] = dp[i - 1][j] + grid[i - 1][j - 1]
+            } else {
+                dp[i][j] = Math.min(dp[i][j - 1] + grid[i - 1][j - 1], dp[i - 1][j] + grid[i - 1][j - 1])
+            }
+        }
+    }
+    return dp[m][n]
+};
+/* 
+T787 https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+加权有向图的最短路径  dp 和 Dijkstra算法都可以
+*/
+var findCheapestPrice = function (n, flights, src, dst, k) {
+    const INF = 10000 * 101 + 1;
+    const f = new Array(k + 2).fill(0).map(() => new Array(n).fill(INF));
+    f[0][src] = 0;
+    for (let t = 1; t <= k + 1; ++t) {
+        for (const flight of flights) {
+            const j = flight[0],
+                i = flight[1],
+                cost = flight[2];
+            f[t][i] = Math.min(f[t][i], f[t - 1][j] + cost);
+        }
+    }
+    let ans = INF;
+    for (let t = 1; t <= k + 1; ++t) {
+        ans = Math.min(ans, f[t][dst]);
+    }
+    return ans == INF ? -1 : ans;
+};

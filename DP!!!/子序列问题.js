@@ -26,8 +26,6 @@ for (int i = 0; i < n; i++) {
 只涉及一个字符串 / 数组时（ 比如本文要讲的最长回文子序列）， dp 数组的含义如下：
 在子数组array[i..j] 中， 我们要求的子序列（最长回文子序列） 的长度为dp[i][j]
 */
-
-
 /* 
 T300 MID https://leetcode.cn/problems/longest-increasing-subsequence/
 最长递增子序列
@@ -49,9 +47,7 @@ var lengthOfLIS = function (nums) {
     }
     return res
 };
-
 // 纸牌/二分查找法
-
 var lengthOfLIS = function (nums) {
     const dp = [nums[0]];
     const len = nums.length;
@@ -105,7 +101,6 @@ var maxEnvelopes = function (envelopes) {
 
     return top.length;
 };
-
 /* 
 T516 MID https://leetcode.cn/problems/longest-palindromic-subsequence/
 最长回文子序列
@@ -125,10 +120,9 @@ var longestPalindromeSubseq = function (s) {
     }
     return dp[0][n - 1]
 };
-
 /* 
 T53 Easy https://leetcode.cn/problems/maximum-subarray/
-最长子数组 就是把序列改成数组 思路一致
+最大子数组和
 */
 var maxSubArray = function (nums) {
     let n = nums.length;
@@ -141,7 +135,6 @@ var maxSubArray = function (nums) {
     }
     return Math.max(...dp)
 };
-
 /* 
 T1143 https://leetcode.cn/problems/longest-common-subsequence/
 MID 最长公共子序列
@@ -162,10 +155,10 @@ var longestCommonSubsequence = function (text1, text2) {
     }
     return dp[m][n]
 };
-
-//T583 https://leetcode.cn/problems/delete-operation-for-two-strings/ 一致的思路 就是求最长公共子序列 然后用原字符的长度去减
-
-// T712 https://mp.weixin.qq.com/s/ZhPEchewfc03xWv9VP3msg 同上 在求序列的时候顺带记录下ASCII码就行
+//T583 https://leetcode.cn/problems/delete-operation-for-two-strings/ 
+// 一致的思路 就是求最长公共子序列 然后用原字符的长度去减 两个字符的删除操作
+// T712 https://mp.weixin.qq.com/s/ZhPEchewfc03xWv9VP3msg 
+// 同上 在求序列的时候顺带记录下ASCII码就行
 var minimumDeleteSum = function (text1, text2) {
     let m = text1.length,
         n = text2.length;
@@ -193,9 +186,8 @@ var minimumDeleteSum = function (text1, text2) {
     }
     return dp(0, 0)
 };
-
 // T392 https://leetcode.cn/problems/is-subsequence/
-
+// 判断子序列
 // 双指针思路
 var isSubsequence = function(s, t) {
     let i = 0, j = 0;
@@ -237,7 +229,7 @@ var isSubsequence = function(s, t) {
     return true
 };
 
-
+// 匹配子序列的单词数
 // T792 https://leetcode.cn/problems/number-of-matching-subsequences
 var numMatchingSubseq = function(s, words) {
     const posMap = new Map()

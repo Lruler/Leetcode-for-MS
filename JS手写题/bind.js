@@ -1,5 +1,4 @@
 // 手写 apply, bind, all
-
 // apply 函数实现 第二个参数是数组
 Function.prototype.myApply = function (context) {
     // 判断调用对象是否为函数
@@ -40,8 +39,6 @@ Function.prototype.myCall = function (context) {
     delete context.fn;
     return result;
 };
-
-
 // bind 函数实现 参数和call一样
 Function.prototype.myBind = function (context) {
     // 判断调用对象是否为函数

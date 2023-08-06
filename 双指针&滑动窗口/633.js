@@ -1,4 +1,4 @@
-// 双指针
+// 双指针 平方数之和
 var judgeSquareSum = function (c) {
     let left = 0;
     let right = Math.floor(Math.sqrt(c));

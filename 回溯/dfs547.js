@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/number-of-provinces/submissions/
+// 省份数量
 
 // 递归
 var findCircleNumDfs = function (isConnected) {

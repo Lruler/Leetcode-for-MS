@@ -1,3 +1,4 @@
+// 验证回文串 II 可以删除一个字符
 var validPalindrome = function (s, r = 0) {
     if (s.length === 2 && r === 0) return true
     if (s.length === 3 && r === 0) return s[0] === s[1] || s[1] === s[2] || s[0] === s[2]

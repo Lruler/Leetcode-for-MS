@@ -27,7 +27,6 @@ int knapsack(int W, int N, int[] wt, int[] val) {
 T416 https://leetcode.cn/problems/partition-equal-subset-sum/
 MID 分割背包问题
 */
-
 var canPartition = function (nums) {
     let n = nums.length;
     if (n <= 1) return false;

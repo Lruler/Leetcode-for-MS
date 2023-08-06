@@ -36,7 +36,6 @@ var maxProfit = function (k, prices) {
     }
     return dp[len - 1][k][0];
 };
-
 function maxProfit2(prices) {
     let profits = 0;
     for (let i = 0; i < prices.length + 1; i++) {
@@ -46,11 +45,8 @@ function maxProfit2(prices) {
     }
     return profits;
 };
-
-
 // T121 easy https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
 // 就是 k = 1 的场景
-
 var maxProfit = function (prices) {
     let n = prices.length;
     let dp = new Array(n).fill(new Array(2));
@@ -65,18 +61,73 @@ var maxProfit = function (prices) {
     }
     return dp[n - 1][0]
 };
-
 // T122 mid https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
 // k为正无穷的情况 就是上面的 maxProfit2 函数
-
+var maxProfit = function(prices) {
+    let profits = 0;
+    for (let i = 0; i < prices.length + 1; i++) {
+        if (prices[i + 1] - prices[i] > 0) {
+            profits += prices[i + 1] - prices[i]
+        }
+    }
+    return profits;
+}
 /* 
 T123 HARD https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
 k = 2的场景
 */
+var maxProfit = function(prices) {
+    let len = prices.length;
+    let k = 2;
+    if (len === 0) return 0;
+    // 构造dp table
+    let dp = Array.from(new Array(len), () => new Array(k + 1));
+    // base case
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j <= k; j++) {
+            dp[i][j] = new Array(2).fill(0);
+        }
+    }
+    for (let i = 0; i < len; i++) {
+        for (let j = k; j > 0; j--) {
+            if (i === 0) {
+                // 处理 i = -1 时的 base case
+                dp[i][j][0] = 0;
+                dp[i][j][1] = -prices[i];
+                continue;
+            }
+            // 今天没有股票，两种可能，昨天也没有，今天啥也不干，或者昨天有，但我今天卖了
+            dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
+            // 今天有股票， 两种可能，昨天就有，今天啥也不干，或者昨天没有，今天买入了
+            dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
+        }
+    }
+    return dp[len - 1][k][0];
+};
 
-// T309 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/ 考虑一天冷冻期
-
-// T714 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ 考虑减去手续费
-
-
-
+// T309 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/ 
+// 考虑一天冷冻期
+const maxProfit = function (prices) {
+    let n = prices.length;
+    let buy = -prices[0];//手中有股票
+    let sell = 0;//没有股票
+    let profit_freeze = 0;
+    for (let i = 1; i < n; i++) {
+        let temp = sell;
+        sell = Math.max(sell, buy + prices[i]);
+        buy = Math.max(buy, profit_freeze - prices[i]);
+        profit_freeze = temp;
+    }
+    return sell;
+};
+// T714 https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ 
+// 考虑减去手续费
+const maxProfit = function (prices, fee) {
+    let sell = 0;//卖出
+    let buy = -prices[0];//买入
+    for (let i = 1; i < prices.length; i++) {
+        sell = Math.max(sell, buy + prices[i] - fee);
+        buy = Math.max(buy, sell - prices[i]);
+    }
+    return sell;
+};

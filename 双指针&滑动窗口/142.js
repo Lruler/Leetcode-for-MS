@@ -1,4 +1,4 @@
-// 快慢指针
+// 快慢指针 环形链表II
 var detectCycle = function (head) {
     if (head === null) {
         return null;

@@ -275,7 +275,7 @@ var maxSlidingWindow = function (nums, k) {
 };
 
 // 括号问题
-
+// 有效的括号
 // T20 https://leetcode.cn/problems/valid-parentheses/description/?q=js&orderBy=most_relevant 栈
 var isValid = function(s) {
     const map = new Map();
@@ -300,6 +300,8 @@ var isValid = function(s) {
 
     return true
 };
+
+// 使括号有效的最少添加
 // T921 https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/description/
 var minAddToMakeValid = function(s) {
     let res = 0;
@@ -319,7 +321,7 @@ var minAddToMakeValid = function(s) {
     }
     return res + need
 };
-
+// 平衡括号字符串的最少插入次数
 // T1541 https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/description/
 var minInsertions = function(s) {
     let res = 0;

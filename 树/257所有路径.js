@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/binary-tree-paths/
+// https://leetcode.cn/problems/binary-tree-paths/   所有路径
 
 var binaryTreePaths = function (root) {
     const paths = [];

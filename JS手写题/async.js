@@ -1,7 +1,6 @@
 function asyncToGenerator(generatorFunc) {
     // 返回的是一个新的函数
     return function () {
-
         // 先调用generator函数 生成迭代器
         // 对应 var gen = testG()
         const gen = generatorFunc.apply(this, arguments)
@@ -69,13 +68,6 @@ function asyncToGenerator(generatorFunc) {
         })
     }
 }
-
-
-
-
-
-
-
 function asyncToGen(genFunction) {
     return function (...args) {
         const gen = genFunction.apply(this, args);
@@ -107,7 +99,6 @@ function asyncToGen(genFunction) {
         });
     };
 }
-
 const asy = (fn) => {
     return function () {
         const iterb = fn.apply(this, arguments)

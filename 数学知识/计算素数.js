@@ -1,3 +1,4 @@
+// 计算素数
 // T204 https://leetcode.cn/problems/count-primes/description/
 
 var countPrimes = function(n) {

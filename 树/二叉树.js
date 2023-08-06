@@ -49,7 +49,6 @@ var maxDepth2 = (root) => {
 
     return Math.max(leftMax, rightMax) + 1
 }
-
 /* 
 后序遍历解题
 这里还要注意后序的特殊之处
@@ -58,7 +57,6 @@ var maxDepth2 = (root) => {
 T543  https://leetcode.cn/problems/diameter-of-binary-tree/
 求二叉树直径
 */
-
 var diameterOfBinaryTree = function (root) {
     let res = 0
     depth(root)
@@ -91,18 +89,15 @@ var maxPathSum = function (root) {
     return max
 
 };
-
 /* 
 T366 要VIP 简单的写一下
 输入[1,2,3,4,5] 输出 [[4,5,3],[2], [1]]
 */
-
 /* 
 层序遍历 就是迭代遍历嘛 
 一个while循环 分管树枝 从上到下 一个for 循环 分管树层 从左到右
 BFS 就是从层序遍历推广来的
 */
-
 /* 
 T515 https://leetcode.cn/problems/find-largest-value-in-each-tree-row/
 找出树的每一层最大值
@@ -125,7 +120,6 @@ var largestValues = function (root, res = []) {
 };
 
 // 递归改迭代
-
 // 前序遍历
 const preorderTraversal = function (root) {
     const stack = [],
@@ -141,7 +135,6 @@ const preorderTraversal = function (root) {
     }
     return res
 };
-
 // 中序遍历
 var inorderTraversal = function(root) {
     const res = [];
@@ -157,7 +150,6 @@ var inorderTraversal = function(root) {
     }
     return res;
 };
-
  // 后序遍历
  // 后序其实就是前序的逆向思路 
  const postorderTraversal = function (root) {

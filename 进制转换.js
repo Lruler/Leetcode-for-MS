@@ -1,5 +1,4 @@
 // T171 26进制转换 https://leetcode.cn/problems/excel-sheet-column-number/ 
-
 var titleToNumber = function (columnTitle) {
     let res = 0
     for (let i = columnTitle.length - 1; i >= 0; --i) {
@@ -13,9 +12,7 @@ var titleToNumber = function (columnTitle) {
     }
     return res
 };
-
 // T168 https://leetcode.cn/problems/excel-sheet-column-title/ 上一题的逆序
-
 var convertToTitle = function (columnNumber) {
     let ans = [];
     while (columnNumber > 0) {
@@ -25,12 +22,7 @@ var convertToTitle = function (columnNumber) {
     }
     return ans.join('');
 };
-
-
-
- 
 // 二进制求和 T67 https://leetcode.cn/problems/add-binary/description/
-
 var addBinary = function(a, b) {
     let ans = "";
     let ca = 0;

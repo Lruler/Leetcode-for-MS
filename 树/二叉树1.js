@@ -10,7 +10,6 @@
 T226 https://leetcode.cn/problems/invert-binary-tree/
 翻转二叉树
 */
-
 var invertTree = function (root) {
     if (!root) return null
 
@@ -22,8 +21,6 @@ var invertTree = function (root) {
     invertTree(root.right)
     return root
 };
-
-
 /* 
 T116 https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
 填充二叉树节点右侧指针
@@ -42,8 +39,6 @@ var connect = function (root) {
     connectTwoNode(root.left, root.right)
     return root
 };
-
-
 /* 
 T114 https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/
 将二叉树展开成链表
@@ -70,5 +65,4 @@ var flatten = function (root) {
 
     p.right = right
 };
-
 // 总 考究一点 如何写递归函数 可以先想一下 当这个树的深度只有2 的时候(即只有三个节点) 函数该怎么写 然后把那个函数当作递归函数就行了

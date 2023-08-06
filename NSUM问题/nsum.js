@@ -22,25 +22,18 @@ const twoSum = (nums, t, start = 0) => {
     }
     return res
 }
-
-
 /* 
 T15 https://leetcode.cn/problems/3sum/
 Mid 3数之和
 */
-
 var threeSum = function (nums) {
     nums.sort((a, b) => a - b);
     return nSumTarget(nums, 3, 0, 0)
 };
-
-
 /* 
 T15 https://leetcode.cn/problems/4sum/submissions/
 Mid 四数之和
 */
-
-
 const nSumTarget = (nums, n, start, target) => {
     let len = nums.length
     let res = [];
@@ -76,8 +69,6 @@ const nSumTarget = (nums, n, start, target) => {
     }
     return res
 }
-
-
 // https://leetcode.cn/problems/3sum-closest/ 最接近的三数之和
 const twoSumClosest = (nums, start, target) => {
     let lo = start,
@@ -96,7 +87,6 @@ const twoSumClosest = (nums, start, target) => {
     }
     return target - delta;
 }
-
 var threeSumClosest = function (nums, target) {
     if (nums.length < 3) return 0;
     nums.sort((a, b) => a - b);

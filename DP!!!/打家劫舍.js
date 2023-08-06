@@ -5,7 +5,6 @@ T198 mid https://leetcode.cn/problems/house-robber/
 站在 i 面前 两个选择 抢 还是 不抢，  抢了 之后 钱就多 去下下家，不抢 钱不变 去下家
 所以有 dp[i] = max(dp[i + 1], nums[i] + dp[i + 2])
 */
-
 // 自顶向下递归
 const rob = (nums) => {
     let memo = Array(nums.length).fill(-1);
@@ -29,14 +28,11 @@ var rob2 = function (nums) {
     }
     return dp[0]
 };
-
-
 /* 
 T213 mid https://leetcode.cn/problems/house-robber-ii/
 打家劫舍II 数组变成环形数组
 那考虑抢第一间 和抢最后一间谁大就行
 */
-
 var robII = function (nums) {
     let n = nums.length;
     if (n == 1) return nums[0];
@@ -53,13 +49,10 @@ var robII = function (nums) {
     }
     return Math.max(dp(0, n - 2), dp(1, n - 1))
 };
-
-
 /* 
 T337 MID https://leetcode.cn/problems/house-robber-iii/
 打家劫舍III 因为是二叉树 所以采取递归的形式(也可以改写成dp table)
 */
-
 let memo = new Map();
 var robIII = function (root) {
     if (root == null) return 0;

@@ -1,3 +1,4 @@
+// 通过删除字母匹配到字典里最长单词
 var findLongestWord = function (s, dictionary) {
     dictionary.sort((word1, word2) => {
         if (word1.length !== word2.length) {

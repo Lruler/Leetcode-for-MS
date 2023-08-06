@@ -7,7 +7,6 @@
 T654 https://leetcode.cn/problems/maximum-binary-tree/
 构造最大二叉树
 */
-
 var constructMaximumBinaryTree = function (nums) {
     if (!nums.length) {
         return null
@@ -23,13 +22,10 @@ var constructMaximumBinaryTree = function (nums) {
     root.right = constructMaximumBinaryTree(nums.slice(index + 1, nums.length))
     return root;
 };
-
-
 /* 
 T105 https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 根据前序和中序 序列 构造二叉树
 */
-
 var buildTree = function (preorder, inorder) {
     const res = (inorder) => {
         if (!inorder || inorder.length === 0) return null //如果中序遍历的节点递归到了叶子节点或者已经递归完毕，则返回null
@@ -42,7 +38,6 @@ var buildTree = function (preorder, inorder) {
     }
     return res(inorder)
 };
-
 /* 
 T106 https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
 根据后序和中序 构造二叉树
@@ -56,13 +51,10 @@ var buildTree = function (inorder, postorder) {
     root.right = buildTree(inorder.slice(topIndex + 1), postorder.slice(topIndex));
     return root;
 };
-
-
 /* 
 T889 https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
 通过前序和后序生成二叉树
 */
-
 var constructFromPrePost = function (preorder, postorder) {
     if (!preorder.length || !postorder.length) {
         return null;
